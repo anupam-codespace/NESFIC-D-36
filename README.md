@@ -254,16 +254,21 @@ NESFIC-D-36/
 
 ---
 
-## 🏢 Corporate Identity & Applicant Details
+## 🏆 Project & Prototype Information
 
-* **Applicant Company**: Globizhub India Private Limited
-* **Corporate Identification Number (CIN)**: `U74999KA2019PTC120377`
-* **DPIIT Recognition Number**: `DIPP250200`
-* **MASI Registration Number**: `MASI2025/1029`
-* **Assam Branch Office**: No. 59, First Floor, Nayanpur Road, Ganeshguri, Guwahati, Kamrup Metropolitan, Assam — 781006
-* **Key Contacts**:
-  * Ethesham Hussain Hashmi (Director, M.Sc., Ph.D.) — `admin@globizhub.com` | `+91 9401317482`
-  * Mashuda Manjur (Director, M.Sc.) — `mashuda.manjur@globizhub.com` | `+91 9940131230`
+* **Project Title**: VidhiAI — Trusted Government Knowledge, Rules & Document Assistant
+* **Problem Statement No.**: PS No. 46 · NESFIC-D-36
+* **National Challenge**: North East Seva First Innovation Challenge 2026 (NESFIC 2026)
+* **Flagship Initiative**: Seva Sankalp Abhiyan
+* **Project Status**: Functional Deep-Tech Prototype · Production & Demonstration-Ready to date
+* **Participating Line Departments (Government of Assam)**:
+  * Administrative Reforms & Training Department
+  * Assam Administrative Staff College (AASC)
+  * Department of Science & Technology (DST)
+  * Pension & Public Grievances Department
+  * Assam State Space Application Centre (ASSAC)
+* **Production Link**: [https://nesfic-d-36.vercel.app](https://nesfic-d-36.vercel.app)
+* **Source Code Repository**: [https://github.com/anupam-codespace/NESFIC-D-36.git](https://github.com/anupam-codespace/NESFIC-D-36.git)
 
 ---
 

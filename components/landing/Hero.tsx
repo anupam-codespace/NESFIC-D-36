@@ -108,114 +108,113 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Formidable Telemetry Box (Desktop Grid + Mobile Sliding Rail) */}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div className="gov-telemetry-box">
-              {/* Telemetry Header */}
-              <div className="gov-telemetry-header">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span className="gov-pulse-dot" />
-                  <span style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#005824' }}>
-                    Repository Telemetry
-                  </span>
-                </div>
-                <span style={{ fontSize: 11, color: '#059669', fontWeight: 600, background: 'rgba(5, 150, 105, 0.08)', padding: '2px 8px', borderRadius: 4 }}>
-                  Live Gazette Index
-                </span>
-              </div>
+          {/* Right Column: Distinct Individual Metric Boxes */}
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            {/* Desktop View: Clean 2-column Grid of Individual Boxes */}
+            <div className="gov-hero-boxes-desktop">
+              {[
+                { label: 'Gazettes Ingested', value: '46+', icon: Table2 },
+                { label: 'Pages Indexed', value: '1,420+', icon: FileText },
+                { label: 'Line Departments', value: '5 Depts', icon: Building2 },
+                { label: 'Verifier Pass Rate', value: '100.0%', valueColor: '#005824', icon: ShieldCheck },
+                { label: 'Statutory Grounding', value: '100.0%', valueColor: '#005824', icon: ShieldCheck },
+                { label: 'Citation Precision', value: '100% Verbatim', icon: CircleCheck },
+              ].map((b, idx) => {
+                const IconComponent = b.icon;
+                return (
+                  <div key={`desktop-box-${idx}`} className="gov-hero-card">
+                    <div>
+                      <p style={{ fontSize: 12, color: '#64748B', margin: 0, fontWeight: 500 }}>
+                        {b.label}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: 22,
+                          fontWeight: 700,
+                          letterSpacing: '-0.02em',
+                          color: b.valueColor || '#0F172A',
+                          margin: '4px 0 0',
+                          lineHeight: 1.2,
+                        }}
+                      >
+                        {b.value}
+                      </p>
+                    </div>
+                    <div
+                      style={{
+                        width: 38,
+                        height: 38,
+                        borderRadius: '50%',
+                        backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#059669',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <IconComponent style={{ width: 18, height: 18 }} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
 
-              {/* Mobile Swipe / Slide Indicator */}
-              <div className="gov-mobile-swipe-hint">
-                <span>← Swipe to slide metrics →</span>
-              </div>
-
-              {/* Cards Container: 3x2 Grid on Desktop, Horizontal Swipe Rail on Mobile */}
-              <div className="gov-telemetry-cards-rail">
-                {/* Card 1: Gazettes Ingested */}
-                <div className="gov-kpi-card">
-                  <div>
-                    <p style={{ fontSize: 11.5, color: '#64748B', margin: 0, fontWeight: 500 }}>Gazettes Ingested</p>
-                    <p style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: '#0F172A', margin: '4px 0 0' }}>
-                      46+
-                    </p>
-                  </div>
-                  <div style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: 'rgba(16, 185, 129, 0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669', flexShrink: 0 }}>
-                    <Table2 style={{ width: 16, height: 16 }} />
-                  </div>
-                </div>
-
-                {/* Card 2: Pages Indexed */}
-                <div className="gov-kpi-card">
-                  <div>
-                    <p style={{ fontSize: 11.5, color: '#64748B', margin: 0, fontWeight: 500 }}>Pages Indexed</p>
-                    <p style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: '#0F172A', margin: '4px 0 0' }}>
-                      1,420+
-                    </p>
-                  </div>
-                  <div style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: 'rgba(16, 185, 129, 0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669', flexShrink: 0 }}>
-                    <FileText style={{ width: 16, height: 16 }} />
-                  </div>
-                </div>
-
-                {/* Card 3: Line Departments */}
-                <div className="gov-kpi-card">
-                  <div>
-                    <p style={{ fontSize: 11.5, color: '#64748B', margin: 0, fontWeight: 500 }}>Line Departments</p>
-                    <p style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: '#0F172A', margin: '4px 0 0' }}>
-                      5 Depts
-                    </p>
-                  </div>
-                  <div style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: 'rgba(16, 185, 129, 0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669', flexShrink: 0 }}>
-                    <Building2 style={{ width: 16, height: 16 }} />
-                  </div>
-                </div>
-
-                {/* Card 4: Verifier Pass Rate */}
-                <div className="gov-kpi-card">
-                  <div>
-                    <p style={{ fontSize: 11.5, color: '#64748B', margin: 0, fontWeight: 500 }}>Verifier Pass Rate</p>
-                    <p style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: '#005824', margin: '4px 0 0' }}>
-                      100.0%
-                    </p>
-                  </div>
-                  <div style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: 'rgba(16, 185, 129, 0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669', flexShrink: 0 }}>
-                    <ShieldCheck style={{ width: 16, height: 16 }} />
-                  </div>
-                </div>
-
-                {/* Card 5: Statutory Rule Grounding */}
-                <div className="gov-kpi-card">
-                  <div>
-                    <p style={{ fontSize: 11.5, color: '#64748B', margin: 0, fontWeight: 500 }}>Statutory Grounding</p>
-                    <p style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: '#005824', margin: '4px 0 0' }}>
-                      100.0%
-                    </p>
-                  </div>
-                  <div style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: 'rgba(16, 185, 129, 0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669', flexShrink: 0 }}>
-                    <ShieldCheck style={{ width: 16, height: 16 }} />
-                  </div>
-                </div>
-
-                {/* Card 6: Citation Precision */}
-                <div className="gov-kpi-card">
-                  <div>
-                    <p style={{ fontSize: 11.5, color: '#64748B', margin: 0, fontWeight: 500 }}>Citation Precision</p>
-                    <p style={{ fontSize: 19, fontWeight: 700, letterSpacing: '-0.02em', color: '#0F172A', margin: '6px 0 0' }}>
-                      100% Verbatim
-                    </p>
-                  </div>
-                  <div style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: 'rgba(16, 185, 129, 0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669', flexShrink: 0 }}>
-                    <CircleCheck style={{ width: 16, height: 16 }} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Telemetry Footer */}
-              <div className="gov-telemetry-footer">
-                <ShieldCheck style={{ width: 14, height: 14, color: '#059669', flexShrink: 0 }} />
-                <span>
-                  Mathematically grounded across Assam Pension Rules 1969, ARTPS Act 2012 & Mission Basundhara
-                </span>
+            {/* Mobile & Small Screens View: Individual boxes move continuously from left to right */}
+            <div className="gov-hero-boxes-mobile-wrapper">
+              <div className="gov-hero-boxes-mobile-track">
+                {[
+                  { label: 'Gazettes Ingested', value: '46+', icon: Table2 },
+                  { label: 'Pages Indexed', value: '1,420+', icon: FileText },
+                  { label: 'Line Departments', value: '5 Depts', icon: Building2 },
+                  { label: 'Verifier Pass Rate', value: '100.0%', valueColor: '#005824', icon: ShieldCheck },
+                  { label: 'Statutory Grounding', value: '100.0%', valueColor: '#005824', icon: ShieldCheck },
+                  { label: 'Citation Precision', value: '100% Verbatim', icon: CircleCheck },
+                  { label: 'Gazettes Ingested', value: '46+', icon: Table2 },
+                  { label: 'Pages Indexed', value: '1,420+', icon: FileText },
+                  { label: 'Line Departments', value: '5 Depts', icon: Building2 },
+                  { label: 'Verifier Pass Rate', value: '100.0%', valueColor: '#005824', icon: ShieldCheck },
+                  { label: 'Statutory Grounding', value: '100.0%', valueColor: '#005824', icon: ShieldCheck },
+                  { label: 'Citation Precision', value: '100% Verbatim', icon: CircleCheck },
+                ].map((b, idx) => {
+                  const IconComponent = b.icon;
+                  return (
+                    <div key={`mobile-box-${idx}`} className="gov-hero-card">
+                      <div>
+                        <p style={{ fontSize: 11.5, color: '#64748B', margin: 0, fontWeight: 500 }}>
+                          {b.label}
+                        </p>
+                        <p
+                          style={{
+                            fontSize: 20,
+                            fontWeight: 700,
+                            letterSpacing: '-0.02em',
+                            color: b.valueColor || '#0F172A',
+                            margin: '3px 0 0',
+                            lineHeight: 1.2,
+                          }}
+                        >
+                          {b.value}
+                        </p>
+                      </div>
+                      <div
+                        style={{
+                          width: 36,
+                          height: 36,
+                          borderRadius: '50%',
+                          backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: '#059669',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <IconComponent style={{ width: 17, height: 17 }} />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

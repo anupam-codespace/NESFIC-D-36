@@ -777,20 +777,23 @@ function DashboardInner() {
       {/* ============================================================== */}
       {/* MAIN WORKSPACE BODY                                            */}
       {/* ============================================================== */}
-      <main style={{ flex: 1, display: 'flex', flexDirection: 'column', maxWidth: 1200, width: '100%', margin: '0 auto', padding: '24px 20px' }}>
+      <main style={{ flex: 1, display: 'flex', flexDirection: 'column', maxWidth: 1200, width: '100%', margin: '0 auto', padding: 'clamp(14px, 2.5vw, 24px) clamp(10px, 2.5vw, 20px)' }}>
         {/* ------------------------------------------------------------ */}
         {/* SUPER ADMIN TAB SWITCHER                                     */}
         {/* ------------------------------------------------------------ */}
         {role === 'admin' && (
           <div
             style={{
-              display: 'inline-flex',
+              display: 'flex',
+              flexWrap: 'wrap',
               alignSelf: 'flex-start',
               backgroundColor: '#EDE9E1',
               borderRadius: 12,
               padding: 3,
-              gap: 3,
+              gap: 4,
               marginBottom: 18,
+              maxWidth: '100%',
+              overflowX: 'auto',
             }}
           >
             {[
@@ -1791,6 +1794,7 @@ function DashboardInner() {
                 loading={isLoadingDocs}
                 pagination={{ pageSize: 8 }}
                 bordered
+                scroll={{ x: 750 }}
               />
             </div>
           </div>
@@ -1803,7 +1807,7 @@ function DashboardInner() {
       <Drawer
         title="Official Gazette Page Inspector"
         placement="right"
-        width={560}
+        width={typeof window !== 'undefined' && window.innerWidth < 640 ? '100%' : 560}
         onClose={() => setInspectorOpen(false)}
         open={inspectorOpen}
       >
@@ -1913,7 +1917,7 @@ function DashboardInner() {
       <Drawer
         title={selectedDocForChunks ? `Extracted OCR Chunks: ${selectedDocForChunks.title}` : 'Document Text Chunks'}
         placement="right"
-        width={650}
+        width={typeof window !== 'undefined' && window.innerWidth < 680 ? '100%' : 650}
         onClose={() => setDocChunksDrawerOpen(false)}
         open={docChunksDrawerOpen}
       >
@@ -1957,12 +1961,13 @@ function DashboardInner() {
         open={testModalOpen}
         onCancel={() => setTestModalOpen(false)}
         footer={null}
-        width={680}
+        width={typeof window !== 'undefined' && window.innerWidth < 720 ? '95%' : 680}
+        style={{ maxWidth: 'calc(100vw - 20px)' }}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 12 }}>
           <div style={{ fontSize: 13, color: '#52565A', backgroundColor: '#FAF8F5', padding: 12, borderRadius: 8, border: '1px solid #ECE7DE' }}>
             Ask questions directly against this specific document. VidhiAI will retrieve only chunks belonging to this
-            file, proving zero-hallucination and exact page citation.
+            file, proving 100% statutory grounding and exact page citation.
           </div>
 
           {/* Quick Inquiry Test Chips */}
@@ -2099,7 +2104,8 @@ function DashboardInner() {
         open={uploadModalOpen}
         onCancel={() => setUploadModalOpen(false)}
         footer={null}
-        width={600}
+        width={typeof window !== 'undefined' && window.innerWidth < 640 ? '95%' : 600}
+        style={{ maxWidth: 'calc(100vw - 20px)' }}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: 18, marginTop: 14 }}>
           {/* Modern File Dropzone */}
@@ -2345,14 +2351,14 @@ function DashboardInner() {
       <Drawer
         title="Departmental Official Gazettes & Knowledge Sources"
         placement="right"
-        width={560}
+        width={typeof window !== 'undefined' && window.innerWidth < 640 ? '100%' : 560}
         open={corpusSourcesDrawerOpen}
         onClose={() => setCorpusSourcesDrawerOpen(false)}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div style={{ fontSize: 13, color: '#52565A', backgroundColor: '#F0F9F3', padding: 14, borderRadius: 10, border: '1px solid #D1E7DD' }}>
             <div style={{ fontWeight: 700, color: '#005824', marginBottom: 4 }}>
-              Zero-Hallucination Source Guarantee
+              Verbatim Statutory Grounding Guarantee
             </div>
             All answers provided by VidhiAI are strictly grounded in these verified official documents. Every sentence is cross-checked against exact page layers before response generation.
           </div>

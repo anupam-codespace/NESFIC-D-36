@@ -273,15 +273,15 @@ export default function CorpusAnalyticsCharts({
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <span style={{ fontSize: 11.5, color: '#71717A', fontWeight: 700, textTransform: 'uppercase' }}>
-              Hallucination Rate
+              Statutory Grounding
             </span>
             <SafetyCertificateOutlined style={{ fontSize: 16, color: '#005824' }} />
           </div>
           <div style={{ fontSize: 28, fontWeight: 700, color: '#005824', marginTop: 8, fontFamily: 'var(--font-sora)' }}>
-            0.0%
+            100.0%
           </div>
           <div style={{ fontSize: 11.5, color: '#005824', marginTop: 4, fontWeight: 600 }}>
-            100% Deterministic NFKC
+            Deterministic NFKC Verifier
           </div>
         </div>
       </div>

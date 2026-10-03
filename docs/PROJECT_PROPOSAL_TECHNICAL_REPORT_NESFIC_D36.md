@@ -4,8 +4,8 @@
 
 **Problem Statement No.:** PS No. 46 · NESFIC-D-36  
 **Submitted to:** Administrative Reforms, Assam Administrative Staff College (AASC), Department of Science & Technology, Pension & Public Grievances Department, and Assam State Space Application Centre (ASSAC), Government of Assam  
-**Submission type:** Deep-Tech Prototype · Production-Ready  
-**Applicant:** Globizhub India Private Limited  
+**Submission type:** Functional Deep-Tech Prototype · Production & Demonstration-Ready to date  
+**Project Lead:** NESFIC-D-36 Innovation Initiative  
 **Date:** October 2026  
 
 ---
@@ -14,34 +14,36 @@
 
 ---
 
-## 1. Company Overview & Corporate Identity
+## 1. Project Overview & Challenge Alignment
 
-* **Company Name:** Globizhub India Private Limited
-* **Industry Sector:** Information Technology (IT) Services, Software Solutions & Deep-Tech GovTech AI
-* **Website:** https://globizhub.com/
-
----
-
-## 2. Registration & Accreditation Details
-
-* **Corporate Identification Number (CIN):** U74999KA2019PTC120377
-* **DPIIT Recognition Number:** DIPP250200
-* **MASI Registration Number:** MASI2025/1029
+* **Project Title:** VidhiAI — Trusted Government Knowledge, Rules & Document Assistant
+* **Problem Statement:** PS No. 46 · NESFIC-D-36 (Government of Assam)
+* **National Challenge:** North East Seva First Innovation Challenge 2026 (NESFIC 2026) under *Seva Sankalp Abhiyan*
+* **Production Link:** https://nesfic-d-36.vercel.app
 
 ---
 
-## 3. Office Locations & Addresses
+## 2. Innovation Track & Maturity Status
 
-* **Registered Address (Karnataka):** No. 594/4/2, First Floor, Opposite to BDS Nagar, RK Nagar 2, Kothanur Main Road, Bangalore, Karnataka — 560077
-* **Branch Office (Assam):** No. 59, First Floor, Nayanpur Road, Ganeshguri, Guwahati, Kamrup Metropolitan, Assam — 781006
+* **Challenge Track:** Deep Tech Prototype Grant (Category B — IT, ITeS & Artificial Intelligence)
+* **Maturity Status:** Functional Deep-Tech Prototype · Production & Demonstration-Ready to date
+* **Verification Proof:** 100% Deterministic NFKC String Grounding (Zero Speculation Engine)
 
 ---
 
-## 4. Leadership & Key Contacts
+## 3. Operational Deployment & Target Architecture
 
-* **Key Contact Person:** Ethesham Hussain Hashmi (Director, M.Sc., Ph.D.) | Email: admin@globizhub.com | Phone: +91 9401317482 / +91 9585123786
-* **Executive Leadership:** Mashuda Manjur (Director, M.Sc.) | Email: mashuda.manjur@globizhub.com | Phone: +91 9940131230
-* **Corporate Email:** admin@globizhub.com
+* **Sovereign Infrastructure:** Assam State Data Centre (SDC) / MeitY-Empanelled Cloud
+* **Administrative Scope:** Assam Secretariat, Line Department Desks, Directorate Offices, District Commissionerates
+* **Data Perimeter:** 100% on-premise state data boundary; air-gapped secretariat compatibility
+
+---
+
+## 4. Participating Departments & Governance Scope
+
+* **Nodal Departments:** Administrative Reforms & Training, Assam Administrative Staff College (AASC), Department of Science & Technology (DST), Pension & Public Grievances Department, and Assam State Space Application Centre (ASSAC)
+* **Source Code Repository:** https://github.com/anupam-codespace/NESFIC-D-36.git
+* **Primary Scope:** Multi-department gazette ingestion, regulatory scrutiny, verbatim statutory citations, and automated secretariat green-sheet notings
 
 ---
 

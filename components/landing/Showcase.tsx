@@ -328,7 +328,7 @@ export default function Showcase() {
                       marginBottom: 8,
                     }}
                   >
-                    <InfoCircleOutlined /> ZERO HALLUCINATION SHIELD ENGAGED
+                    <InfoCircleOutlined /> VERBATIM STATUTORY SHIELD ENGAGED
                   </div>
                   <p
                     style={{

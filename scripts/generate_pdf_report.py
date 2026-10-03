@@ -258,8 +258,8 @@ def build_pdf(output_path):
             Paragraph("Functional Deep-Tech Prototype · Production-Ready", style_table_cell)
         ],
         [
-            Paragraph("<b>Applicant</b>", style_table_cell_bold),
-            Paragraph("Globizhub India Private Limited", style_table_cell)
+            Paragraph("<b>Applicant / Project Lead</b>", style_table_cell_bold),
+            Paragraph("NESFIC-D-36 Innovation Initiative", style_table_cell)
         ],
         [
             Paragraph("<b>Date</b>", style_table_cell_bold),
@@ -304,91 +304,92 @@ def build_pdf(output_path):
     elements.append(PageBreak())
 
     # ==========================================
-    # PAGE 2: CORPORATE IDENTITY & LEADERSHIP
+    # PAGE 2: PROJECT OVERVIEW & GOVERNANCE SCOPE
     # ==========================================
-    elements.append(Paragraph("1. Company Overview & Corporate Identity", style_h1))
+    elements.append(Paragraph("1. Project Overview & Challenge Alignment", style_h1))
     c1_data = [
-        [Paragraph("<b>Company Name</b>", style_table_cell_bold), Paragraph("Globizhub India Private Limited", style_table_cell)],
-        [Paragraph("<b>Industry Sector</b>", style_table_cell_bold), Paragraph("Information Technology (IT) Services, Software Solutions & Deep-Tech GovTech AI", style_table_cell)],
-        [Paragraph("<b>Website</b>", style_table_cell_bold), Paragraph("https://globizhub.com/", style_table_cell)]
+        [Paragraph("<b>Project Title</b>", style_table_cell_bold), Paragraph("VidhiAI — Trusted Government Knowledge, Rules & Document Assistant", style_table_cell)],
+        [Paragraph("<b>Problem Statement</b>", style_table_cell_bold), Paragraph("PS No. 46 · NESFIC-D-36 (Government of Assam)", style_table_cell)],
+        [Paragraph("<b>National Challenge</b>", style_table_cell_bold), Paragraph("North East Seva First Innovation Challenge 2026 (NESFIC 2026) under Seva Sankalp Abhiyan", style_table_cell)],
+        [Paragraph("<b>Production Link</b>", style_table_cell_bold), Paragraph("https://nesfic-d-36.vercel.app", style_table_cell)]
     ]
-    t_c1 = Table(c1_data, colWidths=[130 * pt, USABLE_WIDTH - 130 * pt])
+    t_c1 = Table(c1_data, colWidths=[140 * pt, USABLE_WIDTH - 140 * pt])
     t_c1.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('TOPPADDING', (0, 0), (-1, -1), 5 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 5 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 4.5 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4.5 * pt),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('LINEBELOW', (0, 0), (-1, -1), 0.5, BORDER_COLOR),
     ]))
     elements.append(t_c1)
-    elements.append(Spacer(1, 12 * pt))
+    elements.append(Spacer(1, 10 * pt))
 
-    elements.append(Paragraph("2. Registration & Accreditation Details", style_h1))
+    elements.append(Paragraph("2. Innovation Track & Maturity Status", style_h1))
     c2_data = [
-        [Paragraph("<b>Corporate Identification Number (CIN)</b>", style_table_cell_bold), Paragraph("U74999KA2019PTC120377", style_table_cell)],
-        [Paragraph("<b>DPIIT Recognition Number</b>", style_table_cell_bold), Paragraph("DIPP250200", style_table_cell)],
-        [Paragraph("<b>MASI Registration Number</b>", style_table_cell_bold), Paragraph("MASI2025/1029", style_table_cell)]
+        [Paragraph("<b>Challenge Grant Track</b>", style_table_cell_bold), Paragraph("Deep Tech Prototype Grant (Category B — IT, ITeS & Artificial Intelligence)", style_table_cell)],
+        [Paragraph("<b>Current Project Status</b>", style_table_cell_bold), Paragraph("Functional Deep-Tech Prototype · Production & Demonstration-Ready to date", style_table_cell)],
+        [Paragraph("<b>Statutory Grounding Proof</b>", style_table_cell_bold), Paragraph("100% Deterministic NFKC String Grounding (Zero Speculation Engine)", style_table_cell)]
     ]
-    t_c2 = Table(c2_data, colWidths=[160 * pt, USABLE_WIDTH - 160 * pt])
+    t_c2 = Table(c2_data, colWidths=[150 * pt, USABLE_WIDTH - 150 * pt])
     t_c2.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('TOPPADDING', (0, 0), (-1, -1), 5 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 5 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 4.5 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4.5 * pt),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('LINEBELOW', (0, 0), (-1, -1), 0.5, BORDER_COLOR),
     ]))
     elements.append(t_c2)
-    elements.append(Spacer(1, 12 * pt))
+    elements.append(Spacer(1, 10 * pt))
 
-    elements.append(Paragraph("3. Office Locations & Addresses", style_h1))
+    elements.append(Paragraph("3. Operational Deployment & Target Architecture", style_h1))
     c3_data = [
-        [Paragraph("<b>Registered Address (Karnataka)</b>", style_table_cell_bold), Paragraph("No. 594/4/2, First Floor, Opposite to BDS Nagar, RK Nagar 2, Kothanur Main Road, Bangalore, Karnataka — 560077", style_table_cell)],
-        [Paragraph("<b>Branch Office (Assam)</b>", style_table_cell_bold), Paragraph("No. 59, First Floor, Nayanpur Road, Ganeshguri, Guwahati, Kamrup Metropolitan, Assam — 781006", style_table_cell)]
+        [Paragraph("<b>Sovereign Hosting Perimeter</b>", style_table_cell_bold), Paragraph("Assam State Data Centre (SDC) / MeitY-Empanelled Sovereign Cloud", style_table_cell)],
+        [Paragraph("<b>Administrative Perimeter</b>", style_table_cell_bold), Paragraph("Assam Secretariat, Line Department Desks, Directorate Offices, District Commissionerates", style_table_cell)],
+        [Paragraph("<b>Data Security & Isolation</b>", style_table_cell_bold), Paragraph("100% On-premise State data perimeter; air-gapped secretariat compatibility", style_table_cell)]
     ]
-    t_c3 = Table(c3_data, colWidths=[140 * pt, USABLE_WIDTH - 140 * pt])
+    t_c3 = Table(c3_data, colWidths=[150 * pt, USABLE_WIDTH - 150 * pt])
     t_c3.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('TOPPADDING', (0, 0), (-1, -1), 5 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 5 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 4.5 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4.5 * pt),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('LINEBELOW', (0, 0), (-1, -1), 0.5, BORDER_COLOR),
     ]))
     elements.append(t_c3)
-    elements.append(Spacer(1, 12 * pt))
+    elements.append(Spacer(1, 10 * pt))
 
-    elements.append(Paragraph("4. Leadership & Key Contacts", style_h1))
+    elements.append(Paragraph("4. Participating Departments & Governance Scope", style_h1))
     c4_data = [
-        [Paragraph("<b>Key Contact Person</b>", style_table_cell_bold), Paragraph("Ethesham Hussain Hashmi (Director, M.Sc., Ph.D.) | Email: admin@globizhub.com | Phone: +91 9401317482 / +91 9585123786", style_table_cell)],
-        [Paragraph("<b>Executive Leadership</b>", style_table_cell_bold), Paragraph("Mashuda Manjur (Director, M.Sc.) | Email: mashuda.manjur@globizhub.com | Phone: +91 9940131230", style_table_cell)],
-        [Paragraph("<b>Corporate Email</b>", style_table_cell_bold), Paragraph("admin@globizhub.com", style_table_cell)]
+        [Paragraph("<b>Nodal Line Departments</b>", style_table_cell_bold), Paragraph("Administrative Reforms & Training, Assam Administrative Staff College (AASC), Department of Science & Technology (DST), Pension & Public Grievances Department, and Assam State Space Application Centre (ASSAC)", style_table_cell)],
+        [Paragraph("<b>Source Code Repository</b>", style_table_cell_bold), Paragraph("https://github.com/anupam-codespace/NESFIC-D-36.git", style_table_cell)],
+        [Paragraph("<b>Primary Functional Scope</b>", style_table_cell_bold), Paragraph("Multi-department gazette ingestion, regulatory scrutiny, verbatim statutory citations, and automated secretariat green-sheet notings", style_table_cell)]
     ]
-    t_c4 = Table(c4_data, colWidths=[130 * pt, USABLE_WIDTH - 130 * pt])
+    t_c4 = Table(c4_data, colWidths=[150 * pt, USABLE_WIDTH - 150 * pt])
     t_c4.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('TOPPADDING', (0, 0), (-1, -1), 5 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 5 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 4.5 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4.5 * pt),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('LINEBELOW', (0, 0), (-1, -1), 0.5, BORDER_COLOR),
     ]))
     elements.append(t_c4)
-    elements.append(Spacer(1, 14 * pt))
+    elements.append(Spacer(1, 10 * pt))
 
-    # Corporate Profile & Governance Mandate box for Page 2
+    # Innovation Mandate box for Page 2
     corp_mandate_html = (
-        "<b>Corporate Governance & Regional Focus:</b> Globizhub India Private Limited is a specialized IT and AI "
-        "engineering enterprise dedicated to developing sovereign, tamper-evident digital governance infrastructure "
-        "for public sector institutions. Through its operational branch office in Guwahati, the company maintains direct "
-        "on-ground engineering capability, local linguistic adaptation, and ongoing administrative collaboration for "
-        "participating line departments across the Government of Assam."
+        "<b>Innovation Mandate & Prototype Objectives:</b> VidhiAI has been engineered as a functional, demonstration-ready "
+        "GovTech intelligence prototype to solve critical administrative bottlenecks across the Government of Assam. "
+        "The system combines multimodal gazette ingestion, layout segmentation, deterministic statutory grounding, "
+        "and automated secretariat file noting generation into a cohesive operational workflow for Assam's civil administration."
     )
     corp_table = Table([[Paragraph(corp_mandate_html, style_table_cell)]], colWidths=[USABLE_WIDTH])
     corp_table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), TABLE_BG_ALT),
         ('BOX', (0, 0), (-1, -1), 0.5, BORDER_COLOR),
-        ('TOPPADDING', (0, 0), (-1, -1), 8 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 8 * pt),
-        ('LEFTPADDING', (0, 0), (-1, -1), 10 * pt),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 10 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 7 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 7 * pt),
+        ('LEFTPADDING', (0, 0), (-1, -1), 9 * pt),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 9 * pt),
     ]))
     elements.append(corp_table)
 
