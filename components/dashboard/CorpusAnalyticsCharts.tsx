@@ -7,7 +7,6 @@ import {
   FileTextOutlined,
   ApartmentOutlined,
   SafetyCertificateOutlined,
-  UploadOutlined,
   ReloadOutlined,
   CheckCircleOutlined,
   MessageOutlined,
@@ -156,18 +155,18 @@ export default function CorpusAnalyticsCharts({
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div className="gov-admin-actions-bar">
           <Button
             icon={<ReloadOutlined spin={isLoading} />}
             onClick={onRefresh}
             style={{ borderRadius: 8, height: 38, fontWeight: 600 }}
+            className="gov-admin-action-btn"
           >
             Refresh Data
           </Button>
 
           <Button
             type="primary"
-            icon={<UploadOutlined />}
             onClick={onUploadClick}
             style={{
               backgroundColor: '#005824',
@@ -177,6 +176,7 @@ export default function CorpusAnalyticsCharts({
               fontWeight: 600,
               padding: '0 18px',
             }}
+            className="gov-admin-action-btn"
           >
             Upload Official Gazette PDF
           </Button>

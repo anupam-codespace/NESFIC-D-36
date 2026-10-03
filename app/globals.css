@@ -1599,3 +1599,43 @@ div[data-nextjs-dialog-overlay] {
   }
 }
 
+/* ============================================================== */
+/* Super Admin Action Bar & Buttons on Mobile & Tablet            */
+/* ============================================================== */
+.gov-admin-actions-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .gov-admin-actions-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .gov-admin-actions-bar .ant-btn,
+  .gov-admin-action-btn {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    height: auto !important;
+    min-height: 40px !important;
+    padding: 8px 14px !important;
+    white-space: normal !important;
+    line-height: 1.3 !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .gov-admin-actions-bar {
+    width: auto !important;
+  }
+}
+

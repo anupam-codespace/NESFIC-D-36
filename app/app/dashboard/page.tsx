@@ -17,7 +17,6 @@ import {
 } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import {
-  UploadOutlined,
   CheckCircleOutlined,
   CloseCircleOutlined,
   CopyOutlined,
@@ -1741,29 +1740,29 @@ function DashboardInner() {
                 }}
               >
                 {/* Search Gazettes Input */}
-                <div style={{ width: 340 }}>
+                <div style={{ flex: '1 1 280px', minWidth: 200, width: '100%' }}>
                   <Input
                     placeholder="Search documents by title or department..."
                     prefix={<SearchOutlined style={{ color: '#A1A1AA' }} />}
                     value={docSearchQuery}
                     onChange={(e) => setDocSearchQuery(e.target.value)}
-                    style={{ borderRadius: 8, height: 40 }}
+                    style={{ borderRadius: 8, height: 40, width: '100%' }}
                   />
                 </div>
 
                 {/* Action Buttons: Visual Charts & Upload */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div className="gov-admin-actions-bar">
                   <Button
                     icon={<BarChartOutlined style={{ color: '#005824' }} />}
                     onClick={() => setAdminTab('analytics')}
                     style={{ borderRadius: 8, height: 40, fontWeight: 600 }}
+                    className="gov-admin-action-btn"
                   >
                     View Visual Charts & Ingestion Analytics
                   </Button>
 
                   <Button
                     type="primary"
-                    icon={<UploadOutlined />}
                     onClick={() => {
                       setUploadFile(null);
                       setUploadTitle('');
@@ -1780,6 +1779,7 @@ function DashboardInner() {
                       fontWeight: 600,
                       padding: '0 20px',
                     }}
+                    className="gov-admin-action-btn"
                   >
                     Upload Official Gazette PDF
                   </Button>
@@ -1787,15 +1787,17 @@ function DashboardInner() {
               </div>
 
               {/* Document Table */}
-              <Table
-                dataSource={filteredDocs}
-                columns={docColumns}
-                rowKey="id"
-                loading={isLoadingDocs}
-                pagination={{ pageSize: 8 }}
-                bordered
-                scroll={{ x: 750 }}
-              />
+              <div style={{ width: '100%', overflowX: 'auto' }}>
+                <Table
+                  dataSource={filteredDocs}
+                  columns={docColumns}
+                  rowKey="id"
+                  loading={isLoadingDocs}
+                  pagination={{ pageSize: 8, responsive: true }}
+                  bordered
+                  scroll={{ x: 750 }}
+                />
+              </div>
             </div>
           </div>
         )}
