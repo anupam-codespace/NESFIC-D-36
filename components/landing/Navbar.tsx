@@ -112,18 +112,6 @@ export default function Navbar() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
             <span style={{ fontWeight: 600, whiteSpace: 'nowrap' }}>Government of Assam</span>
             <span className="gov-show-sm" style={{ opacity: 0.8, whiteSpace: 'nowrap' }}>অসম চৰকাৰ</span>
-            <span
-              className="gov-show-md"
-              style={{
-                opacity: 0.65,
-                fontSize: 11,
-                borderLeft: '1px solid rgba(255,255,255,0.25)',
-                paddingLeft: 10,
-                whiteSpace: 'nowrap',
-              }}
-            >
-              NESFIC 2026 · PS No. 46
-            </span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -233,7 +221,7 @@ export default function Navbar() {
                 maxWidth: 420,
               }}
             >
-              অসম চৰকাৰ · Administrative Reforms, AASC, Sci-Tech & Pension Dept.
+              অসম চৰকাৰ · Administrative Reforms Department
             </p>
           </div>
         </Link>
@@ -341,7 +329,7 @@ export default function Navbar() {
             />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontWeight: 700, fontSize: 14, color: '#0F172A' }}>Government of Assam</span>
-              <span style={{ fontSize: 11, color: '#64748B' }}>NESFIC 2026 · PS No. 46</span>
+              <span style={{ fontSize: 11, color: '#64748B' }}>Administrative Reforms Department</span>
             </div>
           </div>
         }

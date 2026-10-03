@@ -20,12 +20,12 @@ export default function Footer() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, maxWidth: 840 }}>
             <ShieldCheck style={{ width: 18, height: 18, color: '#005824', flexShrink: 0 }} />
             <span style={{ fontSize: 12, color: '#475569', lineHeight: 1.5 }}>
-              Administrative Reforms, AASC, Science & Technology, Pension & Public Grievances Department together with ASSAC — Government of Assam.
+              Administrative Reforms Department — Government of Assam.
             </span>
           </div>
 
           <p style={{ fontSize: 11.5, color: '#64748B', fontWeight: 600, margin: 0, whiteSpace: 'nowrap' }}>
-            MVP · PS No. 46 · NESFIC-D-36 · Trusted Government Knowledge Assistant
+            Government Knowledge, Rules & Document Assistant
           </p>
         </div>
 
