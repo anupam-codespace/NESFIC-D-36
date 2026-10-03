@@ -43,21 +43,21 @@ export default function FinalCta() {
           }}
         >
           <Link
-            href="/app/dashboard"
+            href="/login"
             className="gov-btn-primary"
             style={{ height: 42, padding: '0 20px', minWidth: 200 }}
           >
             <MessageSquareWarning style={{ width: 16, height: 16 }} />
-            <span>Ask Government Assistant</span>
+            <span>Sign in to Ask Assistant</span>
           </Link>
 
           <Link
-            href="/app/dashboard"
+            href="/login"
             className="gov-btn-outline"
             style={{ height: 42, padding: '0 20px', minWidth: 200 }}
           >
             <Table2 style={{ width: 16, height: 16, color: '#64748B' }} />
-            <span>Find the statutory rule first</span>
+            <span>Sign in to Browse Rules</span>
           </Link>
         </div>
       </div>

@@ -198,12 +198,12 @@ export default function Navbar() {
         >
           <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Image
-              src="/emblem/state-emblem.png"
-              alt="State Emblem of India"
-              width={38}
-              height={38}
+              src="/emblem/seal-of-assam.png"
+              alt="Government of Assam Seal"
+              width={40}
+              height={40}
               priority
-              style={{ objectFit: 'contain', width: 36, height: 36 }}
+              style={{ objectFit: 'contain', width: 38, height: 38 }}
             />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2, minWidth: 0 }}>
@@ -321,10 +321,10 @@ export default function Navbar() {
         title={
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <Image
-              src="/emblem/state-emblem.png"
-              alt="State Emblem"
-              width={30}
-              height={30}
+              src="/emblem/seal-of-assam.png"
+              alt="Government of Assam Seal"
+              width={34}
+              height={34}
               style={{ objectFit: 'contain' }}
             />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -451,15 +451,15 @@ export default function Navbar() {
             style={{ width: '100%', justifyContent: 'center' }}
           >
             <LogIn style={{ width: 16, height: 16 }} />
-            <span>Officer Sign-in</span>
+            <span>Sign in</span>
           </Link>
           <Link
-            href="/app/dashboard"
+            href="/login"
             onClick={() => setMobileDrawerOpen(false)}
             className="gov-btn-outline"
             style={{ width: '100%', justifyContent: 'center' }}
           >
-            <span>Ask Government Assistant</span>
+            <span>Sign in to Access Dashboard</span>
           </Link>
         </div>
       </Drawer>

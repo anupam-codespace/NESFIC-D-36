@@ -1,13 +1,11 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import {
   Building2,
   Briefcase,
   Users,
   CircleCheck,
-  ArrowRight,
 } from 'lucide-react';
 
 interface RoleCard {
@@ -15,8 +13,6 @@ interface RoleCard {
   icon: React.ReactNode;
   title: string;
   points: string[];
-  ctaLabel: string;
-  ctaHref: string;
 }
 
 const ROLES: RoleCard[] = [
@@ -30,8 +26,6 @@ const ROLES: RoleCard[] = [
       'Aggregate CSV export of currently indexed gazettes and queries',
       'Cryptographic SHA-256 audit trail attributed to every officer noting',
     ],
-    ctaLabel: 'Sign in as State Admin',
-    ctaHref: '/login',
   },
   {
     id: 'officer',
@@ -43,8 +37,6 @@ const ROLES: RoleCard[] = [
       'Draft official green-sheet secretariat notings with citations',
       'Secure PDF intake with automated 300 DPI OCR chunking pipeline',
     ],
-    ctaLabel: 'Sign in as Officer',
-    ctaHref: '/login',
   },
   {
     id: 'citizen',
@@ -56,8 +48,6 @@ const ROLES: RoleCard[] = [
       'Direct page references with transparent source viewer',
       'Plain-language Assamese and English procedural explanations',
     ],
-    ctaLabel: 'Ask Public Rules Assistant',
-    ctaHref: '/app/dashboard',
   },
 ];
 
@@ -106,14 +96,24 @@ export default function Problem() {
                 ))}
               </ul>
 
-              <Link
-                href={role.ctaHref}
-                className="gov-btn-outline"
-                style={{ width: '100%', justifyContent: 'center', height: 38, fontSize: 13, fontWeight: 600 }}
+              <div
+                style={{
+                  marginTop: 'auto',
+                  paddingTop: 12,
+                  borderTop: '1px solid #E2E8F0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  fontSize: 11.5,
+                  color: '#64748B',
+                  fontWeight: 600,
+                }}
               >
-                <span>{role.ctaLabel}</span>
-                <ArrowRight style={{ width: 14, height: 14, color: '#64748B' }} />
-              </Link>
+                <span>Role Scope:</span>
+                <span style={{ color: '#059669', backgroundColor: 'rgba(16, 185, 129, 0.1)', padding: '2px 8px', borderRadius: 4 }}>
+                  {role.id === 'admin' ? 'Statewide Authority' : role.id === 'officer' ? 'Departmental Desk' : 'Public Access'}
+                </span>
+              </div>
             </div>
           ))}
         </div>

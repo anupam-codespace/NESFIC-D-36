@@ -36,12 +36,12 @@ export default function Status() {
             </p>
             <div style={{ marginTop: 24 }}>
               <Link
-                href="/app/dashboard"
+                href="/login"
                 className="gov-btn-outline"
                 style={{ fontSize: 13, fontWeight: 600, height: 38 }}
               >
                 <ChartColumn style={{ width: 16, height: 16, color: '#64748B' }} />
-                <span>Browse all rules & gazettes</span>
+                <span>Sign in to browse all rules</span>
               </Link>
             </div>
           </div>

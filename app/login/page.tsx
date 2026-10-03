@@ -159,25 +159,29 @@ function LoginContent() {
           />
 
           {/* Top Brand Seal */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, zIndex: 3, position: 'relative' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, zIndex: 3, position: 'relative' }}>
             <div
               style={{
-                width: 36,
-                height: 36,
-                borderRadius: '50%',
-                backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.25)',
+                width: 44,
+                height: 44,
+                borderRadius: 10,
+                backgroundColor: '#FFFFFF',
+                border: '1px solid rgba(255, 255, 255, 0.4)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backdropFilter: 'blur(8px)',
+                padding: 3,
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
               }}
             >
-              <Image src="/icon.png" alt="VidhiAI" width={22} height={22} style={{ objectFit: 'contain' }} />
+              <Image src="/emblem/seal-of-assam.png" alt="Government of Assam Seal" width={36} height={36} style={{ objectFit: 'contain' }} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontFamily: 'var(--font-sora)', fontWeight: 700, fontSize: 17, letterSpacing: '-0.01em', color: '#FFFFFF' }}>
-                VidhiAI
+              <span style={{ fontWeight: 700, fontSize: 16, letterSpacing: '-0.01em', color: '#FFFFFF' }}>
+                Government of Assam
+              </span>
+              <span style={{ fontSize: 11, color: 'rgba(255, 255, 255, 0.8)' }}>
+                VidhiAI · Rules & Document Assistant
               </span>
             </div>
           </div>
@@ -201,21 +205,25 @@ function LoginContent() {
           <div className="signup-mobile-brand">
             <div
               style={{
-                width: 44,
-                height: 44,
-                borderRadius: '50%',
-                backgroundColor: '#F7F3EB',
-                border: '1px solid #ECE7DE',
+                width: 48,
+                height: 48,
+                borderRadius: 10,
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #CBD5E1',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                padding: 4,
               }}
             >
-              <Image src="/icon.png" alt="VidhiAI Emblem" width={26} height={26} style={{ objectFit: 'contain' }} />
+              <Image src="/emblem/seal-of-assam.png" alt="Government of Assam Seal" width={38} height={38} style={{ objectFit: 'contain' }} />
             </div>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 700, fontSize: 18, color: '#191B1D', letterSpacing: '-0.01em' }}>
-                VidhiAI
+              <div style={{ fontWeight: 700, fontSize: 16, color: '#0F172A', letterSpacing: '-0.01em' }}>
+                Government of Assam
+              </div>
+              <div style={{ fontSize: 11.5, color: '#64748B' }}>
+                VidhiAI Portal Sign In
               </div>
             </div>
           </div>

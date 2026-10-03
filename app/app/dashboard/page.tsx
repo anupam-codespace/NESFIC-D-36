@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import {
   App,
   Button,
@@ -165,11 +165,20 @@ export default function DashboardPage() {
 }
 
 function DashboardInner() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const { message: antdMsg } = App.useApp();
 
   const roleParam = searchParams.get('role');
   const role: 'employee' | 'admin' = roleParam === 'admin' ? 'admin' : 'employee';
+
+  // Enforce sign-in: anyone trying to access dashboard directly must log in first
+  useEffect(() => {
+    if (!roleParam || (roleParam !== 'admin' && roleParam !== 'employee')) {
+      router.replace('/login');
+    }
+  }, [roleParam, router]);
+
   const [selectedDept, setSelectedDept] = useState<string>('all');
   // Super Admin workspace tab: document registry, visual charts, or knowledge chat
   const [adminTab, setAdminTab] = useState<'documents' | 'analytics' | 'chat'>('documents');
@@ -681,11 +690,14 @@ function DashboardInner() {
                 justifyContent: 'center',
               }}
             >
-              <Image src="/icon.png" alt="Emblem" width={24} height={24} style={{ objectFit: 'contain' }} />
+              <Image src="/emblem/seal-of-assam.png" alt="Government of Assam Seal" width={26} height={26} style={{ objectFit: 'contain' }} />
             </div>
             <div>
-              <div style={{ fontSize: 16.5, fontWeight: 700, color: '#191B1D', letterSpacing: '-0.01em', fontFamily: 'var(--font-sora)' }}>
+              <div style={{ fontSize: 16, fontWeight: 700, color: '#191B1D', letterSpacing: '-0.01em', fontFamily: 'var(--font-sora)' }}>
                 VidhiAI
+              </div>
+              <div style={{ fontSize: 10.5, color: '#047857', fontWeight: 600 }}>
+                Government of Assam
               </div>
             </div>
           </Link>

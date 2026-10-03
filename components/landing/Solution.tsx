@@ -25,7 +25,7 @@ const FEATURES: FeatureItem[] = [
     title: 'Verbatim Citation Grounding',
     description:
       'Every statutory query produces direct, byte-accurate quotes citing gazette notifications, section numbers, and exact page numbers. If evidence is missing, the response is blocked.',
-    href: '/app/dashboard',
+    href: '/login',
   },
   {
     icon: <ScanLine style={{ width: 20, height: 20, color: '#059669' }} />,
@@ -39,28 +39,28 @@ const FEATURES: FeatureItem[] = [
     title: 'Scoped Departmental Scrutiny',
     description:
       'Enforces strict boundaries across Administrative Reforms, AASC training guidelines, Science & Technology policies, Pension & PG rules, and ASSAC geodata.',
-    href: '/app/dashboard',
+    href: '/login',
   },
   {
     icon: <FileEdit style={{ width: 20, height: 20, color: '#059669' }} />,
     title: 'Audit-Ready Officer Noting Generator',
     description:
       'Drafts official green-sheet government notings following standard Assam Secretariat Manual conventions, complete with statutory precedents and verification signatures.',
-    href: '/app/dashboard',
+    href: '/login',
   },
   {
     icon: <Users style={{ width: 20, height: 20, color: '#059669' }} />,
     title: 'Citizen & Pension Entitlement Guides',
     description:
       'Plain-language statutory summaries explaining pension qualification, gratuity formulas, service regularisation, and public service rights without bureaucratic jargon.',
-    href: '/app/dashboard',
+    href: '/login',
   },
   {
     icon: <ShieldCheck style={{ width: 20, height: 20, color: '#059669' }} />,
     title: 'SHA-256 Cryptographic Audit Ledger',
     description:
       'Every ingested document chunk and every generated administrative noting is timestamped and cryptographically hashed to guarantee zero tampering and full accountability.',
-    href: '/app/dashboard',
+    href: '/login',
   },
 ];
 
