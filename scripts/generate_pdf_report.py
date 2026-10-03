@@ -3,7 +3,7 @@
 NESFIC 2026 - Problem Statement 46 (NESFIC-D-36)
 Project Proposal & Technical Report PDF Generator
 Produces a submission-ready, print-perfect 7-PAGE PDF matching the exact visual style,
-typography, dark green header banner, structured tables, and page flow of teammate submissions.
+typography, dark green header banner, 5-milestone structure, and page flow of teammate submissions.
 """
 
 import os
@@ -14,7 +14,7 @@ from reportlab.lib.units import inch, cm, mm
 pt = 1
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, KeepTogether, HRFlowable
+    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, KeepTogether
 )
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
@@ -22,7 +22,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 
 # Page dimensions for A4
 PAGE_WIDTH, PAGE_HEIGHT = A4
-MARGIN = 40 * pt  # ~0.55 inch margins for crisp, professional density
+MARGIN = 44 * pt  # ~0.61 inch margins matching the reference PDF exactly
 USABLE_WIDTH = PAGE_WIDTH - 2 * MARGIN
 
 # Register fonts
@@ -86,16 +86,16 @@ class NumberedCanvas(canvas.Canvas):
         
         # Left footer
         footer_text = "Project Proposal & Technical Report — Trusted Government Knowledge Assistant (NESFIC-D-36)"
-        self.drawString(MARGIN, 20 * pt, footer_text)
+        self.drawString(MARGIN, 22 * pt, footer_text)
         
         # Right footer
         page_str = f"Page {page_num}"
-        self.drawRightString(PAGE_WIDTH - MARGIN, 20 * pt, page_str)
+        self.drawRightString(PAGE_WIDTH - MARGIN, 22 * pt, page_str)
         
         # Thin divider line above footer
         self.setStrokeColor(BORDER_COLOR)
         self.setLineWidth(0.5)
-        self.line(MARGIN, 30 * pt, PAGE_WIDTH - MARGIN, 30 * pt)
+        self.line(MARGIN, 32 * pt, PAGE_WIDTH - MARGIN, 32 * pt)
         
         # On Page 1, draw the top dark green header banner box!
         if page_num == 1:
@@ -112,7 +112,7 @@ class NumberedCanvas(canvas.Canvas):
             self.drawString(MARGIN + 12 * pt, banner_y + 10 * pt, "Government of Assam")
             
             # Right banner text
-            dept_text = "Administrative Reforms · AASC · Science & Technology · Pension & PG · ASSAC"
+            dept_text = "Transformation & Innovations · Administrative Reforms · AASC · DST · Pension · ASSAC"
             self.setFont(FONT_REGULAR, 7.5)
             self.drawRightString(PAGE_WIDTH - MARGIN - 12 * pt, banner_y + 11 * pt, dept_text)
             
@@ -126,7 +126,7 @@ def build_pdf(output_path):
         leftMargin=MARGIN,
         rightMargin=MARGIN,
         topMargin=MARGIN + 36 * pt,  # Extra space for top banner on Page 1
-        bottomMargin=38 * pt
+        bottomMargin=42 * pt
     )
 
     # Custom typography styles
@@ -151,8 +151,8 @@ def build_pdf(output_path):
     style_subtitle = ParagraphStyle(
         'SubTitle',
         fontName=FONT_REGULAR,
-        fontSize=10.5,
-        leading=15,
+        fontSize=10,
+        leading=14.5,
         textColor=BODY_TEXT,
         spaceAfter=14
     )
@@ -182,26 +182,26 @@ def build_pdf(output_path):
     style_body = ParagraphStyle(
         'BodyTextCustom',
         fontName=FONT_REGULAR,
-        fontSize=8.2,
-        leading=11.5,
+        fontSize=8.5,
+        leading=12,
         textColor=BODY_TEXT,
-        spaceAfter=5
+        spaceAfter=6
     )
 
     style_body_bold = ParagraphStyle(
         'BodyBoldCustom',
         fontName=FONT_BOLD,
-        fontSize=8.2,
-        leading=11.5,
+        fontSize=8.5,
+        leading=12,
         textColor=DARK_TEXT,
-        spaceAfter=5
+        spaceAfter=6
     )
 
     style_disclaimer = ParagraphStyle(
         'DisclaimerText',
         fontName=FONT_ITALIC,
-        fontSize=7.8,
-        leading=11,
+        fontSize=8,
+        leading=11.5,
         textColor=colors.HexColor('#475569'),
         spaceBefore=4,
         spaceAfter=4
@@ -210,35 +210,25 @@ def build_pdf(output_path):
     style_table_header = ParagraphStyle(
         'TableHeader',
         fontName=FONT_BOLD,
-        fontSize=7.5,
-        leading=10,
+        fontSize=7.8,
+        leading=10.5,
         textColor=DARK_TEXT
     )
 
     style_table_cell = ParagraphStyle(
         'TableCell',
         fontName=FONT_REGULAR,
-        fontSize=7.5,
-        leading=10,
+        fontSize=7.8,
+        leading=10.5,
         textColor=BODY_TEXT
     )
 
     style_table_cell_bold = ParagraphStyle(
         'TableCellBold',
         fontName=FONT_BOLD,
-        fontSize=7.5,
-        leading=10,
+        fontSize=7.8,
+        leading=10.5,
         textColor=DARK_TEXT
-    )
-
-    style_grant_banner = ParagraphStyle(
-        'GrantBanner',
-        fontName=FONT_BOLD,
-        fontSize=9,
-        leading=12.5,
-        textColor=PRIMARY_GREEN,
-        spaceBefore=2,
-        spaceAfter=2
     )
 
     elements = []
@@ -248,9 +238,9 @@ def build_pdf(output_path):
     # ==========================================
     elements.append(Spacer(1, 10 * pt))
     elements.append(Paragraph("Project Proposal & Technical Report", style_label))
-    elements.append(Paragraph("Real-Time Monitoring & Trusted Government Knowledge Assistant", style_title))
+    elements.append(Paragraph("Trusted Government Knowledge, Rules & Document Assistant", style_title))
     elements.append(Paragraph(
-        "A Sovereign Generative AI, Verbatim Statutory Grounding & Document Scrutiny Platform for the Government of Assam",
+        "A Data-Driven Generative AI & Document Scrutiny Platform for the Government of Assam",
         style_subtitle
     ))
 
@@ -281,15 +271,15 @@ def build_pdf(output_path):
     meta_table = Table(meta_data, colWidths=[130 * pt, USABLE_WIDTH - 130 * pt])
     meta_table.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('TOPPADDING', (0, 0), (-1, -1), 5 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 5 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 5.5 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 5.5 * pt),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('RIGHTPADDING', (0, 0), (-1, -1), 0),
         ('LINEBELOW', (0, 0), (-1, -1), 0.5, BORDER_COLOR),
     ]))
     elements.append(meta_table)
 
-    elements.append(Spacer(1, 18 * pt))
+    elements.append(Spacer(1, 20 * pt))
 
     # Notice & Disclaimer Box
     disclaimer_html = (
@@ -305,8 +295,8 @@ def build_pdf(output_path):
     disc_table.setStyle(TableStyle([
         ('LINEABOVE', (0, 0), (-1, -1), 0.5, colors.HexColor('#cbd5e1')),
         ('LINEBELOW', (0, 0), (-1, -1), 0.5, colors.HexColor('#cbd5e1')),
-        ('TOPPADDING', (0, 0), (-1, -1), 7 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 7 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 8 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 8 * pt),
         ('LEFTPADDING', (0, 0), (-1, -1), 6 * pt),
         ('RIGHTPADDING', (0, 0), (-1, -1), 6 * pt),
     ]))
@@ -320,14 +310,14 @@ def build_pdf(output_path):
     elements.append(Paragraph("1. Company Overview & Corporate Identity", style_h1))
     c1_data = [
         [Paragraph("<b>Company Name</b>", style_table_cell_bold), Paragraph("Globizhub India Private Limited", style_table_cell)],
-        [Paragraph("<b>Industry Sector</b>", style_table_cell_bold), Paragraph("Information Technology (IT) Services, Software Solutions & Deep-Tech GovTech AI", style_table_cell)],
+        [Paragraph("<b>Industry Sector</b>", style_table_cell_bold), Paragraph("Information Technology (IT) Services & Software Solutions", style_table_cell)],
         [Paragraph("<b>Website</b>", style_table_cell_bold), Paragraph("https://globizhub.com/", style_table_cell)]
     ]
     t_c1 = Table(c1_data, colWidths=[130 * pt, USABLE_WIDTH - 130 * pt])
     t_c1.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('TOPPADDING', (0, 0), (-1, -1), 3 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 3 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 3.5 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3.5 * pt),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('LINEBELOW', (0, 0), (-1, -1), 0.5, BORDER_COLOR),
     ]))
@@ -343,8 +333,8 @@ def build_pdf(output_path):
     t_c2 = Table(c2_data, colWidths=[160 * pt, USABLE_WIDTH - 160 * pt])
     t_c2.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('TOPPADDING', (0, 0), (-1, -1), 3 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 3 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 3.5 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3.5 * pt),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('LINEBELOW', (0, 0), (-1, -1), 0.5, BORDER_COLOR),
     ]))
@@ -359,8 +349,8 @@ def build_pdf(output_path):
     t_c3 = Table(c3_data, colWidths=[140 * pt, USABLE_WIDTH - 140 * pt])
     t_c3.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('TOPPADDING', (0, 0), (-1, -1), 3 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 3 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 3.5 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3.5 * pt),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('LINEBELOW', (0, 0), (-1, -1), 0.5, BORDER_COLOR),
     ]))
@@ -376,8 +366,8 @@ def build_pdf(output_path):
     t_c4 = Table(c4_data, colWidths=[130 * pt, USABLE_WIDTH - 130 * pt])
     t_c4.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('TOPPADDING', (0, 0), (-1, -1), 3 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 3 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 3.5 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3.5 * pt),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('LINEBELOW', (0, 0), (-1, -1), 0.5, BORDER_COLOR),
     ]))
@@ -386,7 +376,7 @@ def build_pdf(output_path):
 
     elements.append(Paragraph("5. Problem Statement", style_h1))
     elements.append(Paragraph(
-        "Administrative governance in Assam is operationalised through thousands of gazette notifications, service rules, executive guidelines, and office memoranda across multiple nodal departments — <b>Administrative Reforms & Training (ARTPS)</b>, <b>Assam Administrative Staff College (AASC)</b>, <b>Department of Science & Technology (DST)</b>, <b>Pension & Public Grievances Department</b>, and <b>Assam State Space Application Centre (ASSAC)</b>. While these statutory rules form the backbone of legal administration, an acute operational gap exists between legislative intent, administrative disposal, and citizen service delivery:",
+        "Administrative governance in Assam is operationalised through a large portfolio of gazettes, notifications, service rules, executive guidelines, and office memoranda across multiple nodal line departments — <b>Administrative Reforms & Training</b>, <b>Assam Administrative Staff College (AASC)</b>, <b>Department of Science & Technology (DST)</b>, <b>Pension & Public Grievances Department</b>, and <b>Assam State Space Application Centre (ASSAC)</b>. Each department manages critical statutory mandates, qualifying service determinations, and citizen-facing services. Yet an operational gap exists between legislative intent and administrative disposal:",
         style_body
     ))
     elements.append(Paragraph(
@@ -402,8 +392,7 @@ def build_pdf(output_path):
     prob_p2 = [
         "<b>2. For State Administrators & Civil Service Training (AASC):</b> When inducting and training Assam Civil Services (ACS) and departmental personnel, curricula rely on static digests that quickly fall out of sync with real-time statutory amendments. Supervisory authorities lack a centralized, searchable intelligence platform to monitor knowledge utilization and ensure uniformity across departments.",
         "<b>3. For Technical & Spatial Governance (DST & ASSAC):</b> Complex technical guidelines for remote sensing, geospatial land demarcation, and digital infrastructure require strict adherence to statutory specifications. Non-technical officers frequently struggle to locate and interpret specialized norms without inter-departmental referrals.",
-        "<b>4. For Retiring Employees & Public Pensioners:</b> Retiring government servants and citizens face significant bureaucratic friction understanding pension eligibility, qualifying service calculations, and requisite forms (e.g., Form 7, No Demand Certificates) under the <i>Assam Services (Pension) Rules 1969</i>, often resulting in avoidable grievances.",
-        "<b>5. The Unacceptable Risk of Generic AI in Governance:</b> Standard commercial Large Language Models (LLMs) hallucinate plausible-sounding legal clauses, invent nonexistent government circulars, and cannot provide byte-accurate evidence citations. In public administration and statutory law, unverified synthetic text creates severe legal liability and compromises public trust."
+        "<b>4. For Retiring Employees & Public Pensioners:</b> Retiring government servants and citizens face significant bureaucratic friction understanding pension eligibility, qualifying service calculations, and requisite forms (e.g., Form 7, No Demand Certificates) under the <i>Assam Services (Pension) Rules 1969</i>, often resulting in avoidable grievances."
     ]
     for p in prob_p2:
         elements.append(Paragraph(p, style_body))
@@ -411,17 +400,16 @@ def build_pdf(output_path):
     elements.append(Spacer(1, 6 * pt))
     elements.append(Paragraph("6. Solution Overview", style_h1))
     elements.append(Paragraph(
-        "We present <b>Trusted Government Knowledge, Rules & Document Assistant (VidhiAI / NESFIC-D-36)</b> — a sovereign, deep-tech GovTech intelligence platform engineered specifically for the Government of Assam. The platform transitions administrative knowledge management from fragmented manual paper-search to continuous, verifiable, zero-hallucination operational intelligence. The platform comprises six interconnected operational layers:",
+        "We present <b>Trusted Government Knowledge, Rules & Document Assistant</b> — a full-stack governance and legal intelligence platform that transitions administrative knowledge management from periodic manual search to continuous operational intelligence. The platform comprises five interconnected operational layers:",
         style_body
     ))
 
     sol_layers = [
-        "<b>1. Dual-Layer 300 DPI OCR & Ingestion Pipeline:</b> High-throughput document processor featuring PIL/OpenCV-based adaptive contrast enhancement, skew correction, and dual-layer layout analysis. Extracts text layers from both clean digital gazettes and degraded historical scanned circulars, with dedicated support for English and Assamese statutory fonts.",
-        "<b>2. Structural Chunking & Statutory Rule Parsing Layer:</b> Custom algorithmic chunker that detects statutory section boundaries (e.g., <i>Rule 41(2)</i>, <i>Section 9(1)</i>, <i>Clause 1.19</i>) and consolidates structured lists, preventing broken clauses and preserving legal context.",
-        "<b>3. Deterministic Retrieval & Substantive Quote Extractor:</b> Hybrid search engine pairing BM25 keyword matching with dense semantic embeddings. A substantive sentence extractor isolates statutory operative sentences (containing verbs such as <i>mandates</i>, <i>shall</i>, <i>entitles</i>, <i>capped</i>) to eliminate decorative boilerplate.",
-        "<b>4. Zero-Hallucination Strict Verifier Guardrail:</b> Mathematical character-level NFKC string grounding validator. Every statement generated by the assistant is cross-referenced against the verbatim text layer of the cited gazette. If a claim lacks exact substring grounding, the response is rejected with a safe failure message.",
-        "<b>5. Audit-Ready Secretariat Green-Sheet Noting Generator:</b> Automatically formats statutory answers into standard Assam Secretariat Manual notings—complete with Reference File Number, Statutory Rule Citation, Verification Stamp, and Action Recommendation.",
-        "<b>6. SHA-256 Cryptographic Provenance Ledger:</b> Every ingested document chunk and every issued administrative noting is timestamped and cryptographically hashed, guaranteeing immutable traceability for vigilance audits and administrative inquiries."
+        "<b>1. Dual-Layer 300 DPI OCR & Ingestion Pipeline:</b> High-throughput document processor featuring adaptive contrast enhancement, skew correction, and dual-layer layout analysis. Extracts text layers from both clean digital gazettes and degraded historical scanned circulars, with dedicated support for English and Assamese statutory fonts.",
+        "<b>2. Structural Chunking & Statutory Rule Parsing Layer:</b> Custom algorithmic chunker that detects statutory section boundaries (e.g., <i>Rule 41(2)</i>, <i>Section 9(1)</i>) and consolidates structured lists, preventing broken clauses and preserving legal context.",
+        "<b>3. Deterministic Retrieval & Substantive Quote Extractor:</b> Hybrid search engine pairing BM25 keyword matching with dense semantic embeddings. A substantive sentence extractor isolates operative legal provisions to eliminate decorative boilerplate.",
+        "<b>4. Zero-Hallucination Strict Verifier Guardrail:</b> Mathematical character-level NFKC string grounding validator. Every statement generated by the assistant is cross-referenced against the verbatim text layer of the cited gazette. If a claim lacks exact substring grounding, the response is rejected with a safe refusal.",
+        "<b>5. Secretariat Green-Sheet Noting & Cryptographic Audit Layer:</b> Formats verified statutory answers directly into standard Assam Secretariat Manual notings. Every ingested document chunk and generated noting is timestamped and cryptographically hashed (SHA-256), establishing a continuous audit trail."
     ]
     for s in sol_layers:
         elements.append(Paragraph(s, style_body))
@@ -429,7 +417,7 @@ def build_pdf(output_path):
     elements.append(Spacer(1, 6 * pt))
     elements.append(Paragraph("7. Core Architectural Capabilities", style_h1))
     elements.append(Paragraph(
-        "The platform introduces the following deep-tech architectural innovations tailored to Assam's administrative framework:",
+        "The platform introduces the following architectural innovations tailored to Assam's administrative framework:",
         style_body
     ))
     elements.append(Paragraph(
@@ -443,7 +431,7 @@ def build_pdf(output_path):
     # PAGE 4: ARCHITECTURE (P2) & TECHNOLOGY STACK
     # ==========================================
     arch_p2 = [
-        "<b>2. Departmental Context Boundary & Role-Based Access Control (RBAC):</b> Server-side enforcement provides dedicated workspaces for STATE_ADMIN (full statewide visibility), DEPT_OFFICER (department-scoped with instant noting generation), and CITIZEN (plain-language eligibility summaries with transparent document page viewers).",
+        "<b>2. Role-Based Access Control with Server-Side Enforcement:</b> Dedicated workspaces for STATE_ADMIN (full statewide visibility), DEPT_OFFICER (department-scoped with instant noting generation), and CITIZEN (plain-language eligibility summaries with transparent document page viewers).",
         "<b>3. Safe Refusal & Audit Escalation Protocol:</b> When queried on matters outside the active statutory index, the platform refuses to synthesize ungrounded speculation, instead logging the query for departmental nodal officer review.",
         "<b>4. Bilingual Script Ingestion Readiness:</b> Foundational tokenization pipeline architected for seamless processing of Assamese script (অসমীয়া লিপি) alongside English administrative gazettes.",
         "<b>5. Sovereign On-Premise Deployability:</b> Designed for deployment within the Assam State Data Centre (SDC) or MeitY-empanelled sovereign cloud infrastructure, ensuring confidential government files remain within state-controlled perimeters."
@@ -458,14 +446,14 @@ def build_pdf(output_path):
     tech_impl_data = [
         [
             Paragraph("<b>Frontend Framework</b>", style_table_cell_bold),
-            Paragraph("Next.js 16 (App Router, Turbopack), React 19, TypeScript 5, Vanilla CSS Responsive Design System, Ant Design 6.x, Lucide React icons, Framer Motion", style_table_cell)
+            Paragraph("Next.js 16 (App Router, Turbopack), React 19, TypeScript 5, Tailwind CSS 4, shadcn/ui, Lucide React icons, Framer Motion", style_table_cell)
         ],
         [
             Paragraph("<b>Accessibility & UI</b>", style_table_cell_bold),
-            Paragraph("GIGW 3.0 compliant, Screen Reader ARIA landmarks, A-/A+ font resizer, SpeechSynthesis audio narrator (Hear), Bilingual language selector (EN/AS)", style_table_cell)
+            Paragraph("GIGW 3.0 compliant, Screen Reader ARIA landmarks, A-/A+ font resizer, SpeechSynthesis audio narrator (Hear), Bilingual selector (EN/AS)", style_table_cell)
         ],
         [
-            Paragraph("<b>Backend & API</b>", style_table_cell_bold),
+            Paragraph("<b>Backend & Database</b>", style_table_cell_bold),
             Paragraph("FastAPI / Python 3.9+ asynchronous REST API, SQLite3 relational metadata index, PyMuPDF (fitz) dual-layer OCR extraction engine", style_table_cell)
         ],
         [
@@ -473,11 +461,11 @@ def build_pdf(output_path):
             Paragraph("Hybrid BM25 + dense vector indexing, deterministic substantive quote extractor, character-level NFKC verifier engine", style_table_cell)
         ],
         [
-            Paragraph("<b>Access Control & RBAC</b>", style_table_cell_bold),
+            Paragraph("<b>Access Control</b>", style_table_cell_bold),
             Paragraph("Role-scoped session handling (Super Admin, Desk Officer, Citizen), scoped document filtering via dept_scope", style_table_cell)
         ],
         [
-            Paragraph("<b>Audit Ledger & Export</b>", style_table_cell_bold),
+            Paragraph("<b>Audit Ledger</b>", style_table_cell_bold),
             Paragraph("SHA-256 cryptographic document chunk hashing, immutable noting timestamps, CSV telemetry export", style_table_cell)
         ]
     ]
@@ -502,7 +490,7 @@ def build_pdf(output_path):
         ],
         [
             Paragraph("<b>Enterprise IAM</b>", style_table_cell_bold),
-            Paragraph("Integration with official National/State Single Sign-On (Jan Parichay / e-Pramaan) with Multi-Factor Authentication (MFA)", style_table_cell)
+            Paragraph("Integration with official State SSO (Jan Parichay / e-Pramaan) with Multi-Factor Authentication (MFA)", style_table_cell)
         ],
         [
             Paragraph("<b>Sovereign Deep Tech SLM</b>", style_table_cell_bold),
@@ -540,11 +528,10 @@ def build_pdf(output_path):
     # ==========================================
     elements.append(Paragraph("9. Current Stage & Demonstration", style_h1))
     elements.append(Paragraph(
-        "<b>Functional MVP Prototype · Demonstration-Ready.</b> A working full-stack prototype is deployed and verified. "
-        "The system indexes official Assam gazette collections across Pension Rules 1969, ARTPS Act 2012, Mission Basundhara guidelines, "
-        "and DST circulars, delivering sub-second verbatim grounding with zero hallucination. The prototype includes bilingual UI navigation, "
-        "desk-scoped filtering, dual-layer OCR text layer inspection, automated Secretariat green-sheet noting generation, "
-        "speech synthesis accessibility, and continuous SHA-256 cryptographic audit logging.",
+        "<b>Functional MVP Prototype · Demonstration-Ready.</b> A working full-stack prototype is deployed using official Assam gazettes "
+        "across Pension Rules 1969, ARTPS Act 2012, Mission Basundhara guidelines, and DST circulars. The MVP includes multi-route navigation, "
+        "role-based desk isolation, dual-layer OCR extraction, character-level verification, automated green-sheet noting generation, "
+        "and a continuous audit trail.",
         style_body
     ))
     elements.append(Paragraph("<b>Demonstration URL:</b> https://nesfic-d-36.vercel.app <i>(Demonstration environment)</i>", style_body))
@@ -558,12 +545,12 @@ def build_pdf(output_path):
             Paragraph("<b>Production Scope</b>", style_table_header)
         ],
         [
-            Paragraph("Bilingual Government Header & Banner", style_table_cell),
+            Paragraph("Multi-Route Navigation", style_table_cell),
             Paragraph("Implemented", style_table_cell_bold),
             Paragraph("Integration with State portal master navigation", style_table_cell)
         ],
         [
-            Paragraph("Accessibility Suite (TTS Audio & Font Scaler)", style_table_cell),
+            Paragraph("Accessibility Suite (TTS & Font Resizer)", style_table_cell),
             Paragraph("Implemented", style_table_cell_bold),
             Paragraph("STQC certified WCAG 2.1 AAA compliance", style_table_cell)
         ],
@@ -626,16 +613,16 @@ def build_pdf(output_path):
     elements.append(Paragraph("10. Stakeholder & Context Analysis", style_h1))
     elements.append(Paragraph("<b>Target Stakeholders</b>", style_h2))
     stk_points = [
-        "<b>1. Primary Regulatory & Secretariat Bodies (B2G):</b> Administrative Reforms Department (statutory compliance), Assam Administrative Staff College (ACS civil service training), Department of Science & Technology & ASSAC (geospatial/technical guidelines), and Pension & Public Grievances Department (pension disposal).",
+        "<b>1. Primary Regulatory & Administrative Bodies (B2G):</b> Administrative Reforms Department (statutory compliance), Assam Administrative Staff College (ACS civil service training), Department of Science & Technology & ASSAC (geospatial/technical guidelines), and Pension & Public Grievances Department.",
         "<b>2. Internal Administrative Cadre:</b> Joint Secretaries, Deputy Secretaries, Under Secretaries, Section Officers, and Senior Assistants across line departments responsible for file drafting and statutory approvals.",
-        "<b>3. Public Beneficiaries & Retiring Officers:</b> Retiring government employees, pensioners, and citizens requiring clear, authoritative interpretations of Assam service laws and entitlement rules without intermediary exploitation."
+        "<b>3. Public Beneficiaries:</b> Retiring government employees, pensioners, and citizens who benefit from transparent entitlement interpretations and verified eligibility calculations."
     ]
     for sp in stk_points:
         elements.append(Paragraph(sp, style_body))
 
     elements.append(Paragraph("<b>Contextual Differentiation</b>", style_h2))
     elements.append(Paragraph(
-        "Existing monitoring and review processes rely on static manual digests and unverified paper registries. Generic ticketing and commercial chat platforms lack awareness of Assam's statutory workflows, secretariat green-sheet noting hierarchies, and departmental jurisdictions. VidhiAI is purpose-built for Assam: it models the exact statutory relationships between principal acts and amending notifications, ensures 100% evidence-grounded answers, and formats results directly into the green-sheet notings officers utilize daily.",
+        "Existing administrative workflows rely on manual circular physical files and static digests. Generic AI and ticketing platforms lack awareness of Assam's statutory workflows, secretariat green-sheet noting hierarchies, and departmental jurisdictions. VidhiAI is purpose-built for the Assam context — it models the exact statutory relationships between principal acts and amending notifications, ensures 100% evidence-grounded answers, and formats results directly into the green-sheet notings officers already know.",
         style_body
     ))
 
@@ -646,187 +633,133 @@ def build_pdf(output_path):
     # ==========================================
     elements.append(Paragraph("11. Intellectual Property & Licensing", style_h1))
     ip_points = [
-        "<b>• IP Status:</b> Proprietary GovTech software and algorithmic architecture developed specifically for the challenge. Full demonstration source code provided for state evaluation.",
-        "<b>• Patent Strategy:</b> Provisional domestic patent planned covering (1) <i>Method and System for Deterministic Zero-Hallucination Retrieval and Character-Level NFKC String Grounding in Administrative Legal Documents</i>; and (2) <i>Automated Statutory Amendment Reconciliation and Cryptographic Provenance Tracking for Secretariat Decisions</i>.",
-        "<b>• Deployment Model:</b> Proposed as an indigenous SaaS / On-Premise GovTech model hosted on the Assam State Data Centre (SDC) or MeitY-empanelled sovereign cloud, with complete data isolation for air-gapped secretariats."
+        "<b>• IP Status:</b> Proprietary software architecture developed for the challenge; the source code for the demonstration prototype is provided for evaluation purposes.",
+        "<b>• Patent Strategy:</b> Provisional domestic patent planned covering the method and architecture for real-time, zero-hallucination statutory verification, automated green-sheet noting generation, and cryptographic provenance tracking in administrative governance.",
+        "<b>• Deployment Model:</b> Proposed as an indigenous SaaS / GovTech model deployable on the State Data Centre (SDC) or MeitY-empanelled cloud infrastructure, with the option of an on-premise deployment for air-gapped secretariats."
     ]
     for ip in ip_points:
         elements.append(Paragraph(ip, style_body))
 
     elements.append(Spacer(1, 8 * pt))
     elements.append(Paragraph("12. Funding & Staged Milestones", style_h1))
+    elements.append(Paragraph("<b>Requested Grant:</b> ₹40,00,000 (Rupees Forty Lakhs) — Deep Tech Grant / Assam Startup Scheme.", style_body_bold))
+    elements.append(Spacer(1, 4 * pt))
 
-    # Grant Directive callout matching manager's instruction
-    grant_html = (
-        "<b>Requested Grant: ₹40,00,000 (Rupees Forty Lakhs) — NESFIC 2026 Deep-Tech Grant</b><br/>"
-        "<i>Allocation Model: Track A (Core MVP & Enterprise Deployment): ₹20,00,000 | "
-        "Track B (Deep-Tech & Generative AI Research): ₹20,00,000</i>"
-    )
-    grant_banner_table = Table([[Paragraph(grant_html, style_grant_banner)]], colWidths=[USABLE_WIDTH])
-    grant_banner_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#ecfdf5')),
-        ('BOX', (0, 0), (-1, -1), 0.75, ACCENT_GREEN),
-        ('TOPPADDING', (0, 0), (-1, -1), 4 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 4 * pt),
-        ('LEFTPADDING', (0, 0), (-1, -1), 8 * pt),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 8 * pt),
-    ]))
-    elements.append(grant_banner_table)
-    elements.append(Spacer(1, 6 * pt))
-
-    # Milestones Table (9 Milestones matching ₹40 Lakhs exactly)
+    # Milestones Table: Exactly 5 Milestones matching Reference PDF 1
     ms_headers = [
         Paragraph("<b>#</b>", style_table_header),
-        Paragraph("<b>Milestone & Work Package</b>", style_table_header),
-        Paragraph("<b>Track</b>", style_table_header),
+        Paragraph("<b>Milestone</b>", style_table_header),
         Paragraph("<b>Budget</b>", style_table_header),
         Paragraph("<b>Share</b>", style_table_header),
         Paragraph("<b>Prerequisites</b>", style_table_header),
-        Paragraph("<b>Key Deliverables</b>", style_table_header)
+        Paragraph("<b>Deliverables</b>", style_table_header)
     ]
 
     ms_rows = [
         [
             Paragraph("1", style_table_cell_bold),
-            Paragraph("Data & Gazette Ontology Ingestion", style_table_cell_bold),
-            Paragraph("Track A", style_table_cell),
-            Paragraph("₹3,60,000", style_table_cell_bold),
-            Paragraph("9.0%", style_table_cell),
-            Paragraph("Gazette archives from AASC, Pension, ARTPS, DST", style_table_cell),
-            Paragraph("Assam statutory data dictionary; structured JSON schema; multi-dept pipeline", style_table_cell)
+            Paragraph("Multi-Department Data & Gazette Corpus Engineering", style_table_cell_bold),
+            Paragraph("₹6,40,000", style_table_cell_bold),
+            Paragraph("16%", style_table_cell),
+            Paragraph("Gazette archives from AASC, Pension, ARTPS, DST, ASSAC", style_table_cell),
+            Paragraph("Comprehensive Assam statutory ontology; structured JSON schema; multimodal ingestion pipeline", style_table_cell)
         ],
         [
             Paragraph("2", style_table_cell_bold),
-            Paragraph("Production Ingestion & SDC Connector", style_table_cell_bold),
-            Paragraph("Track A", style_table_cell),
-            Paragraph("₹5,20,000", style_table_cell_bold),
-            Paragraph("13.0%", style_table_cell),
-            Paragraph("SDC sandbox access; API permissions", style_table_cell),
-            Paragraph("Production OCR connector with automated retry logic, queue management & reconciliation", style_table_cell)
+            Paragraph("Bilingual Assamese Vision-Language OCR & Ingestion Engine", style_table_cell_bold),
+            Paragraph("₹10,40,000", style_table_cell_bold),
+            Paragraph("26%", style_table_cell),
+            Paragraph("Historical gazettes corpuses; State Data Centre sandbox", style_table_cell),
+            Paragraph("Custom OCR fine-tuned on Assamese ligatures (98%+ benchmark); 300 DPI dual-layer connector with retry logic", style_table_cell)
         ],
         [
             Paragraph("3", style_table_cell_bold),
-            Paragraph("Security, VAPT & GIGW 3.0 Hardening", style_table_cell_bold),
-            Paragraph("Track A", style_table_cell),
-            Paragraph("₹3,80,000", style_table_cell_bold),
-            Paragraph("9.5%", style_table_cell),
-            Paragraph("MeitY-compliant staging cloud", style_table_cell),
-            Paragraph("CERT-In empanelled VAPT audit clearance; GIGW 3.0 accessibility verification; DPDP dossier", style_table_cell)
+            Paragraph("Sovereign Legal SLM & Zero-Hallucination Grounding Engine", style_table_cell_bold),
+            Paragraph("₹10,80,000", style_table_cell_bold),
+            Paragraph("27%", style_table_cell),
+            Paragraph("Secretariat Manual precedents; annotated green-sheet notings", style_table_cell),
+            Paragraph("Domain-adapted 7B/14B parameter Legal SLM; character-level NFKC verifier engine; automated statutory conflict graph", style_table_cell)
         ],
         [
             Paragraph("4", style_table_cell_bold),
-            Paragraph("Multi-Department Secretariat Pilot", style_table_cell_bold),
-            Paragraph("Track A", style_table_cell),
-            Paragraph("₹5,00,000", style_table_cell_bold),
-            Paragraph("12.5%", style_table_cell),
-            Paragraph("Pilot clearance (Admin Reforms, AASC, Pension)", style_table_cell),
-            Paragraph("60-day live pilot across 3 nodal departments; 100+ officers onboarded; validation report", style_table_cell)
+            Paragraph("Multi-Department Secretariat Pilot & Security Hardening", style_table_cell_bold),
+            Paragraph("₹7,60,000", style_table_cell_bold),
+            Paragraph("19%", style_table_cell),
+            Paragraph("Pilot clearance (Administrative Reforms, AASC, Pension); MeitY staging cloud", style_table_cell),
+            Paragraph("60-day live pilot across 3 nodal departments (100+ officers); CERT-In VAPT audit report; GIGW 3.0 accessibility verification", style_table_cell)
         ],
         [
             Paragraph("5", style_table_cell_bold),
-            Paragraph("Scale Readiness & Rollout Blueprint", style_table_cell_bold),
-            Paragraph("Track A", style_table_cell),
-            Paragraph("₹2,40,000", style_table_cell_bold),
-            Paragraph("6.0%", style_table_cell),
-            Paragraph("Pilot telemetry data; legal review", style_table_cell),
-            Paragraph("Statewide rollout architectural blueprint; SDC bare-metal scripts; officer manual", style_table_cell)
-        ],
-        [
-            Paragraph("6", style_table_cell_bold),
-            Paragraph("Bilingual Assamese OCR Pretraining", style_table_cell_bold),
-            Paragraph("Track B<br/>(Deep Tech)", style_table_cell),
-            Paragraph("₹5,50,000", style_table_cell_bold),
-            Paragraph("13.75%", style_table_cell),
-            Paragraph("Historical Assamese gazettes & font corpuses", style_table_cell),
-            Paragraph("Custom OCR fine-tuned on Assamese ligatures; 98%+ character benchmark; bilingual chunker", style_table_cell)
-        ],
-        [
-            Paragraph("7", style_table_cell_bold),
-            Paragraph("Sovereign Legal SLM Fine-Tuning", style_table_cell_bold),
-            Paragraph("Track B<br/>(Deep Tech)", style_table_cell),
-            Paragraph("₹6,00,000", style_table_cell_bold),
-            Paragraph("15.0%", style_table_cell),
-            Paragraph("Secretariat Manual precedents & annotated notings", style_table_cell),
-            Paragraph("Domain-adapted 7B/14B parameter SLM fine-tuned for formal Secretariat noting synthesis", style_table_cell)
-        ],
-        [
-            Paragraph("8", style_table_cell_bold),
-            Paragraph("Automated Statutory Conflict Graph", style_table_cell_bold),
-            Paragraph("Track B<br/>(Deep Tech)", style_table_cell),
-            Paragraph("₹4,50,000", style_table_cell_bold),
-            Paragraph("11.25%", style_table_cell),
-            Paragraph("Amendment history of Assam Service Rules", style_table_cell),
-            Paragraph("Directed Acyclic Graph (DAG) detecting repealed clauses, active circulars & conflicts", style_table_cell)
-        ],
-        [
-            Paragraph("9", style_table_cell_bold),
-            Paragraph("Blockchain Provenance & Air-Gap Build", style_table_cell_bold),
-            Paragraph("Track B<br/>(Deep Tech)", style_table_cell),
-            Paragraph("₹4,00,000", style_table_cell_bold),
-            Paragraph("10.0%", style_table_cell),
-            Paragraph("Production container security clearance", style_table_cell),
-            Paragraph("SHA-256 tamper-evident provenance ledger; immutable audit export; air-gapped installer", style_table_cell)
+            Paragraph("Legal & Scale Readiness, Provenance Ledger & SDC Deployment", style_table_cell_bold),
+            Paragraph("₹4,80,000", style_table_cell_bold),
+            Paragraph("12%", style_table_cell),
+            Paragraph("Pilot telemetry data; SDC production container clearance", style_table_cell),
+            Paragraph("Evaluation report; statewide rollout blueprint; SHA-256 cryptographic provenance ledger; SDC bare-metal deployment", style_table_cell)
         ],
         [
             Paragraph("", style_table_cell_bold),
-            Paragraph("<b>Total Grant Request (Track A + Track B)</b>", style_table_cell_bold),
-            Paragraph("<b>Full Scope</b>", style_table_cell_bold),
+            Paragraph("<b>Total</b>", style_table_cell_bold),
             Paragraph("<b>₹40,00,000</b>", style_table_cell_bold),
             Paragraph("<b>100%</b>", style_table_cell_bold),
-            Paragraph("<b>Complete 12-Month Roadmap</b>", style_table_cell_bold),
-            Paragraph("<b>Demonstration-Ready, Scalable GovTech AI for Assam</b>", style_table_cell_bold)
+            Paragraph("", style_table_cell),
+            Paragraph("", style_table_cell)
         ]
     ]
 
     t_ms_data = [ms_headers] + ms_rows
-    col_w = [16 * pt, 100 * pt, 48 * pt, 52 * pt, 34 * pt, 105 * pt, USABLE_WIDTH - (16+100+48+52+34+105) * pt]
+    col_w = [16 * pt, 110 * pt, 56 * pt, 36 * pt, 115 * pt, USABLE_WIDTH - (16+110+56+36+115) * pt]
     t_ms = Table(t_ms_data, colWidths=col_w)
     t_ms.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), TABLE_BG_ALT),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('TOPPADDING', (0, 0), (-1, -1), 2.5 * pt),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.5 * pt),
-        ('LEFTPADDING', (0, 0), (-1, -1), 2.5 * pt),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 2.5 * pt),
+        ('TOPPADDING', (0, 0), (-1, -1), 3.5 * pt),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3.5 * pt),
+        ('LEFTPADDING', (0, 0), (-1, -1), 3 * pt),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 3 * pt),
         ('LINEBELOW', (0, 0), (-1, -2), 0.5, BORDER_COLOR),
         ('LINEBELOW', (0, 0), (-1, 0), 1.0, PRIMARY_GREEN),
         # Highlight total row in yellow
         ('BACKGROUND', (0, -1), (-1, -1), TOTAL_YELLOW),
         ('LINEABOVE', (0, -1), (-1, -1), 1.0, PRIMARY_GREEN),
         ('LINEBELOW', (0, -1), (-1, -1), 1.0, PRIMARY_GREEN),
-        ('TOPPADDING', (0, -1), (-1, -1), 3.5 * pt),
-        ('BOTTOMPADDING', (0, -1), (-1, -1), 3.5 * pt),
+        ('TOPPADDING', (0, -1), (-1, -1), 4 * pt),
+        ('BOTTOMPADDING', (0, -1), (-1, -1), 4 * pt),
     ]))
     elements.append(t_ms)
+    elements.append(Spacer(1, 10 * pt))
 
-    elements.append(PageBreak())
-
-    # ==========================================
-    # PAGE 7: PROJECTED IMPACT & ASSAM STARTUP POLICY ALIGNMENT
-    # ==========================================
     elements.append(Paragraph("13. Projected Impact & Evaluation", style_h1))
     elements.append(Paragraph("<i>Targeted estimates based on pilot benchmarks.</i>", style_body))
     elements.append(Paragraph("<b>Administrative Impacts</b>", style_h2))
 
     admin_impacts = [
-        "<b>1. Accelerated Evidence Retrieval:</b> Reduces evidence retrieval and rule cross-referencing from an average of 4–6 hours per file to under 2 minutes, dramatically accelerating Secretariat decision-making.",
-        "<b>2. Proactive Operational Triage:</b> Surfaces operative clauses, qualifying service rules, and entitlement ceilings within seconds of query submission — eliminating the lag between file intake and supervisory disposal.",
-        "<b>3. Objective Merit Recognition:</b> Continuous audit-logged noting records establish an objective basis for recognizing high-performing desk officers, section officers, and departments.",
-        "<b>4. Citizen-Centric Transparency:</b> Plain-language entitlement summaries and transparent source document inspections restore citizen trust in government pension and public service delivery.",
-        "<b>5. Zero Legal Liability from Hallucinations:</b> Character-level string verifier guarantees that citations and rules cited in secretariat green notings are 100% true to official gazettes."
+        "<b>1. Accelerated Evidence Retrieval:</b> Reduces evidence-assembly and rule cross-referencing time for file reviews from hours to minutes, dramatically accelerating Secretariat decision-making.",
+        "<b>2. Proactive Operational Triage:</b> Surfaces operative clauses, qualifying service rules, and entitlement ceilings within seconds of query submission — eliminating the lag between file intake and supervisory disposal."
     ]
     for ai in admin_impacts:
         elements.append(Paragraph(ai, style_body))
 
+    elements.append(PageBreak())
+
+    # ==========================================
+    # PAGE 7: PROJECTED IMPACT CONT. & STARTUP POLICY ALIGNMENT
+    # ==========================================
+    admin_impacts_p2 = [
+        "<b>3. Objective Merit Recognition:</b> Continuous per-scheme progress and audit-logged noting records establish an objective basis for recognizing high-performing officers and departments.",
+        "<b>4. Citizen-Centric Transparency:</b> Plain-language entitlement summaries and transparent source document inspections restore citizen trust in government pension and public service delivery."
+    ]
+    for ai in admin_impacts_p2:
+        elements.append(Paragraph(ai, style_body))
+
     elements.append(Paragraph("<b>Employment & Capacity Targets</b>", style_h2))
     emp_points = [
-        "<b>• Direct Technical Roles:</b> 8–12 engineering, AI/ML research, legal ontology, and GIS data roles based in Assam at the Globizhub Guwahati branch office.",
-        "<b>• Ecosystem Support Roles:</b> 30–50 indirect technical and training support positions across districts (nodal officers, digitization operators, field trainers)."
+        "<b>• Direct Technical Roles:</b> 6–10 engineering, AI/ML research, legal ontology, and GIS data roles based in Assam (Guwahati branch office).",
+        "<b>• Ecosystem Support Roles:</b> 25–40 indirect technical and training support positions across districts (nodal officers, digitization operators, field trainers)."
     ]
     for ep in emp_points:
         elements.append(Paragraph(ep, style_body))
 
-    elements.append(Spacer(1, 6 * pt))
+    elements.append(Spacer(1, 8 * pt))
     elements.append(Paragraph("14. Alignment with Assam Startup Policy 2025–2030", style_h1))
     elements.append(Paragraph("<b>Primary Category:</b> Category B — IT, ITeS & Artificial Intelligence (Deep Tech Specialization)", style_body_bold))
     elements.append(Paragraph("The proposal aligns with the \"Innovate Assam 2030\" key strategic focus areas:", style_body))
@@ -840,7 +773,7 @@ def build_pdf(output_path):
     for ap in align_points:
         elements.append(Paragraph(ap, style_body))
 
-    elements.append(Spacer(1, 10 * pt))
+    elements.append(Spacer(1, 14 * pt))
 
     # Formal Submission / Sign-off block
     sign_data = [
