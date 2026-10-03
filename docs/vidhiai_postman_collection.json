@@ -1,0 +1,151 @@
+{
+  "info": {
+    "_postman_id": "vidhiai-api-collection-2026",
+    "name": "VidhiAI - Assam Rules Verified Knowledge API",
+    "description": "Postman API Collection for VidhiAI (NESFIC 2026 Challenge D-36). Integrates with Postman student benefits from GitHub Student Developer Pack.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Health & Verifier Readiness",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        },
+        "description": "Checks health of the VidhiAI engine, database connection, document counts, and verifier status."
+      },
+      "response": []
+    },
+    {
+      "name": "2. Official Document Inventory",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/documents",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "documents"]
+        },
+        "description": "Lists all 10 verified Assam Government gazette documents with SHA-256 hashes and review statuses."
+      },
+      "response": []
+    },
+    {
+      "name": "3. Query: Assam Pension (Officer File Noting)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"How many years of service are required for family pension in Assam?\",\n  \"role\": \"employee\",\n  \"persona\": \"officer\",\n  \"language\": \"en\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/ask",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "ask"]
+        },
+        "description": "Tests retrieval of Rule 41(2) and generation of formal administrative File Noting."
+      },
+      "response": []
+    },
+    {
+      "name": "4. Query: ARTPS 30-Day Appeal (Citizen Guide)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"What is the statutory deadline to file a First Appeal under the ARTPS Act 2012?\",\n  \"role\": \"employee\",\n  \"persona\": \"citizen\",\n  \"language\": \"en\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/ask",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "ask"]
+        },
+        "description": "Tests Citizen Persona output with plain language explanation and document checklist."
+      },
+      "response": []
+    },
+    {
+      "name": "5. Query: Mission Basundhara 2.0 (Land Ceiling)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"What are the eligibility criteria and land settlement ceilings under Mission Basundhara 2.0?\",\n  \"role\": \"employee\",\n  \"persona\": \"officer\",\n  \"language\": \"en\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/ask",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "ask"]
+        },
+        "description": "Tests retrieval of 1-bigha ceiling from Mission Basundhara 2.0 notification."
+      },
+      "response": []
+    },
+    {
+      "name": "6. Safe-Failure Refusal (Zero Hallucination Protocol)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"What is the government subsidy percentage for residential rooftop solar installation under Assam solar policy?\",\n  \"role\": \"employee\",\n  \"persona\": \"officer\",\n  \"language\": \"en\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/ask",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "ask"]
+        },
+        "description": "Verifies that out-of-corpus queries safely refuse to answer without fabricating data."
+      },
+      "response": []
+    },
+    {
+      "name": "7. Approve Pending Gazette (Admin Action)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/documents/doc_mb3_notification/approve",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "documents", "doc_mb3_notification", "approve"]
+        },
+        "description": "Approves the pending Mission Basundhara 3.0 notification into the active verifier catalog."
+      },
+      "response": []
+    }
+  ]
+}

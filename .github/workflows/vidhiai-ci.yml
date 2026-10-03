@@ -1,0 +1,74 @@
+name: VidhiAI Continuous Integration & Verification Pipeline
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  verify:
+    name: Verify Assam Rules Corpus, API & Benchmark
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-eng
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Verify SHA-256 Hashes of Ingested PDFs
+        run: |
+          python -c "
+          import json, hashlib, os
+          with open('corpus/manifest.json') as f:
+              docs = json.load(f)
+          for d in docs:
+              path = os.path.join('corpus', d['filename'])
+              assert os.path.exists(path), f'Missing PDF: {path}'
+              with open(path, 'rb') as pf:
+                  digest = hashlib.sha256(pf.read()).hexdigest()
+              assert digest == d['sha256'], f'Hash mismatch on {d[\"filename\"]}'
+              print(f'Verified {d[\"filename\"]}: {digest[:16]}... OK')
+          print('All 10 Assam Government Gazettes cryptographically verified.')
+          "
+
+      - name: Seed SQLite Database
+        run: |
+          PYTHONPATH=. python -m backend.seed
+
+      - name: Run Backend Pytest Suite
+        run: |
+          PYTHONPATH=. pytest backend/tests/ -v
+
+      - name: Execute 20-Query Evaluation Benchmark
+        run: |
+          PYTHONPATH=. python eval/run_eval.py
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Frontend Dependencies
+        run: npm ci
+
+      - name: Run Frontend Lint & Build
+        run: |
+          npm run lint
+          npm run build
