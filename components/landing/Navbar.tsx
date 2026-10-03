@@ -200,25 +200,26 @@ export default function Navbar() {
             <Image
               src="/emblem/seal-of-assam.png"
               alt="Government of Assam Seal"
-              width={40}
-              height={40}
+              width={36}
+              height={36}
               priority
-              style={{ objectFit: 'contain', width: 38, height: 38 }}
+              style={{ objectFit: 'contain', width: 34, height: 34 }}
             />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2, minWidth: 0 }}>
-            <p style={{ fontWeight: 700, letterSpacing: '-0.02em', fontSize: 15, color: '#0F172A', margin: 0 }}>
+            <p style={{ fontWeight: 700, letterSpacing: '-0.02em', fontSize: 14, color: '#0F172A', margin: 0, whiteSpace: 'nowrap' }}>
               Government of Assam
             </p>
             <p
+              className="gov-show-md"
               style={{
-                fontSize: 11,
+                fontSize: 10.5,
                 color: '#64748B',
                 margin: 0,
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
-                maxWidth: 420,
+                maxWidth: 320,
               }}
             >
               অসম চৰকাৰ · Administrative Reforms Department
@@ -247,7 +248,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right Action Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
           {/* Theme Toggle Button */}
           <button
             type="button"
@@ -256,17 +257,18 @@ export default function Navbar() {
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: 34,
-              width: 34,
+              height: 32,
+              width: 32,
               borderRadius: 6,
               border: '1px solid #E2E8F0',
               backgroundColor: '#FFFFFF',
               color: '#334155',
               cursor: 'pointer',
+              flexShrink: 0,
             }}
             aria-label="Toggle color theme"
           >
-            {isDark ? <Sun style={{ width: 16, height: 16, color: '#F59E0B' }} /> : <Moon style={{ width: 16, height: 16 }} />}
+            {isDark ? <Sun style={{ width: 15, height: 15, color: '#F59E0B' }} /> : <Moon style={{ width: 15, height: 15 }} />}
           </button>
 
           {/* Primary Sign In Button */}
@@ -276,19 +278,21 @@ export default function Navbar() {
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 6,
-              height: 34,
-              padding: '0 14px',
+              gap: 5,
+              height: 32,
+              padding: '0 10px',
               borderRadius: 6,
               backgroundColor: '#005824',
               color: '#FFFFFF',
-              fontSize: 12.5,
+              fontSize: 12,
               fontWeight: 600,
               textDecoration: 'none',
               boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
-            <LogIn style={{ width: 14, height: 14 }} />
+            <LogIn style={{ width: 13, height: 13 }} />
             <span>Sign in</span>
           </Link>
 
@@ -301,17 +305,18 @@ export default function Navbar() {
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: 34,
-              width: 34,
+              height: 32,
+              width: 32,
               borderRadius: 6,
               border: '1px solid #E2E8F0',
               backgroundColor: '#FFFFFF',
               color: '#334155',
               cursor: 'pointer',
+              flexShrink: 0,
             }}
             aria-label="Open mobile navigation menu"
           >
-            <Menu style={{ width: 18, height: 18 }} />
+            <Menu style={{ width: 16, height: 16 }} />
           </button>
         </div>
       </div>

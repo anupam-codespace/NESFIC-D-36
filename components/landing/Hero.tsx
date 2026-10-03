@@ -20,22 +20,23 @@ export default function Hero() {
       <div className="gov-container">
         <div className="gov-hero-grid">
           {/* Left Column: Official Identity & Core Call to Action */}
-          <div>
+          <div style={{ minWidth: 0, maxWidth: '100%', width: '100%', overflow: 'hidden' }}>
             {/* Government Department Lockup with Official Assam Seal */}
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 14,
-                marginBottom: 24,
-                paddingBottom: 16,
+                gap: 12,
+                marginBottom: 20,
+                paddingBottom: 14,
                 borderBottom: '1px solid rgba(167, 243, 208, 0.6)',
+                width: '100%',
               }}
             >
               <div
                 style={{
-                  width: 60,
-                  height: 60,
+                  width: 52,
+                  height: 52,
                   borderRadius: 12,
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #CBD5E1',
@@ -50,20 +51,20 @@ export default function Hero() {
                 <Image
                   src="/emblem/seal-of-assam.png"
                   alt="Government of Assam Seal"
-                  width={52}
-                  height={52}
+                  width={44}
+                  height={44}
                   priority
                   style={{ objectFit: 'contain', width: '100%', height: '100%' }}
                 />
               </div>
-              <div style={{ minWidth: 0 }}>
-                <p style={{ fontSize: 17, fontWeight: 700, letterSpacing: '-0.02em', color: '#0F172A', margin: 0 }}>
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <p style={{ fontSize: 16, fontWeight: 700, letterSpacing: '-0.02em', color: '#0F172A', margin: 0, wordBreak: 'break-word' }}>
                   Government of Assam
                 </p>
-                <p style={{ fontSize: 11.5, color: '#64748B', margin: 0 }}>
+                <p style={{ fontSize: 11, color: '#64748B', margin: 0, wordBreak: 'break-word' }}>
                   অসম চৰকাৰ · Government of Assam
                 </p>
-                <p style={{ fontSize: 11.5, color: '#047857', fontWeight: 600, marginTop: 2, margin: 0 }}>
+                <p style={{ fontSize: 11.5, color: '#047857', fontWeight: 600, marginTop: 2, margin: 0, wordBreak: 'break-word' }}>
                   Administrative Reforms Department
                 </p>
               </div>
@@ -80,18 +81,10 @@ export default function Hero() {
             </p>
 
             {/* Action Buttons */}
-            <div
-              style={{
-                marginTop: 28,
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: 12,
-              }}
-            >
+            <div className="gov-hero-actions">
               <Link
                 href="/login"
                 className="gov-btn-primary"
-                style={{ minWidth: 140 }}
               >
                 <LogIn style={{ width: 16, height: 16 }} />
                 <span>Sign in</span>
@@ -100,7 +93,6 @@ export default function Hero() {
               <Link
                 href="/login"
                 className="gov-btn-outline"
-                style={{ minWidth: 180 }}
               >
                 <FileText style={{ width: 16, height: 16, color: '#059669' }} />
                 <span>Explore Official Gazettes</span>
@@ -109,7 +101,17 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Distinct Individual Metric Boxes */}
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div
+            style={{
+              minWidth: 0,
+              maxWidth: '100%',
+              width: '100%',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
             {/* Desktop View: Clean 2-column Grid of Individual Boxes */}
             <div className="gov-hero-boxes-desktop">
               {[
