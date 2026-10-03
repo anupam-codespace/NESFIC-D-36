@@ -76,7 +76,7 @@ export default function Hero() {
 
             {/* Subtitle */}
             <p className="gov-hero-subtitle">
-              A unified, tamper-evident AI intelligence system providing zero-hallucination verbatim citations, multi-department gazette ingestion, OCR scrutiny, and audit-ready secretariat notings across the Government of Assam.
+              A sovereign administrative intelligence platform delivering verbatim statutory grounding, multi-department gazette synthesis, regulatory scrutiny, and audit-ready secretariat file notings across the Government of Assam.
             </p>
 
             {/* Action Buttons */}
@@ -183,16 +183,16 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* Card 5: Hallucination Rate */}
+                {/* Card 5: Statutory Rule Grounding */}
                 <div className="gov-kpi-card">
                   <div>
-                    <p style={{ fontSize: 11.5, color: '#64748B', margin: 0, fontWeight: 500 }}>Hallucination Rate</p>
-                    <p style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: '#0F172A', margin: '4px 0 0' }}>
-                      0.00%
+                    <p style={{ fontSize: 11.5, color: '#64748B', margin: 0, fontWeight: 500 }}>Statutory Grounding</p>
+                    <p style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: '#005824', margin: '4px 0 0' }}>
+                      100.0%
                     </p>
                   </div>
                   <div style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: 'rgba(16, 185, 129, 0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669', flexShrink: 0 }}>
-                    <TrendingUp style={{ width: 16, height: 16 }} />
+                    <ShieldCheck style={{ width: 16, height: 16 }} />
                   </div>
                 </div>
 

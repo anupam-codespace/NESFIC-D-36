@@ -15,7 +15,7 @@ const METRICS: MetricItem[] = [
   { label: 'Pages Scanned & Indexed', value: '1,420+' },
   { label: 'Verifier Pass Rate', value: '100.0%' },
   { label: 'Participating Departments', value: '5 Depts' },
-  { label: 'Hallucination Rate', value: '0.00%' },
+  { label: 'Statutory Rule Grounding', value: '100.0%' },
 ];
 
 export default function Status() {
