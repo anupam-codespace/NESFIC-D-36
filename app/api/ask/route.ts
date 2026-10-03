@@ -1,34 +1,60 @@
 import { NextRequest } from 'next/server';
+import { askQuestion } from '@/lib/corpusService';
 
-const BACKEND_URL = process.env.BACKEND_URL ?? 'http://127.0.0.1:8000';
+const BACKEND_URL = process.env.BACKEND_URL;
 
 export async function POST(request: NextRequest): Promise<Response> {
+  let body: {
+    query?: string;
+    role?: string;
+    persona?: string;
+    language?: string;
+    document_id?: string;
+    department?: string;
+  };
+
   try {
-    const body = await request.json();
-
-    const backendResponse = await fetch(`${BACKEND_URL}/api/ask`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    const data = await backendResponse.json();
-    return Response.json(data, { status: backendResponse.status });
-  } catch (err) {
-    return Response.json(
-      {
-        outcome: 'insufficient_evidence',
-        query: '',
-        claims: [],
-        retrievedCount: 0,
-        latencyMs: 0,
-        auditId: 'ERR-BACKEND-OFFLINE',
-        verifierStatus: 'ERROR (FastAPI Backend Unreachable)',
-        error: String(err),
-      },
-      { status: 503 }
-    );
+    body = await request.json();
+  } catch {
+    body = { query: '' };
   }
+
+  const query = (body.query || '').trim();
+
+  // If external backend is explicitly configured, try proxying with timeout
+  if (BACKEND_URL) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3000);
+
+      const backendResponse = await fetch(`${BACKEND_URL}/api/ask`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+
+      if (backendResponse.ok) {
+        const data = await backendResponse.json();
+        return Response.json(data, { status: backendResponse.status });
+      }
+    } catch {
+      // Fall through to native Next.js engine
+    }
+  }
+
+  // Native Next.js Deterministic RAG Engine
+  const result = askQuestion({
+    query,
+    role: body.role,
+    persona: body.persona,
+    language: body.language,
+    document_id: body.document_id,
+    department: body.department,
+  });
+
+  return Response.json(result, { status: 200 });
 }
