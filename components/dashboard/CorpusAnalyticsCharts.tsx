@@ -37,7 +37,7 @@ export interface DocumentMetric {
 
 export interface AnalyticsData {
   total_documents: number;
-  total_pages: number;
+  total_pages: number; 
   total_chunks: number;
   approved_documents: number;
   pending_documents: number;
