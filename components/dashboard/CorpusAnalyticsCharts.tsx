@@ -65,7 +65,7 @@ const DEPT_COLORS: Record<string, { bg: string; border: string; accent: string; 
   basundhara: { bg: '#FFFBEB', border: '#FDE68A', accent: '#B45309', bar: '#D97706' },
   revenue: { bg: '#FFFBEB', border: '#FDE68A', accent: '#B45309', bar: '#D97706' },
   finance: { bg: '#EFF6FF', border: '#BFDBFE', accent: '#1D4ED8', bar: '#2563EB' },
-  default: { bg: '#F5F3FF', border: '#DDD6FE', accent: '#6D28D9', bar: '#7C3AED' },
+  default: { bg: '#F5F3FF', border: '#DDD6FE', accent: '#6D28D9', bar: '#7C3AED' }, 
 };
 
 function getDeptTheme(deptName: string) {
