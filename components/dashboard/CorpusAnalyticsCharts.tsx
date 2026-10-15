@@ -16,7 +16,7 @@ import {
 
 export interface DepartmentStat {
   department: string;
-  doc_count: number;
+  doc_count: number; 
   page_count: number;
   chunk_count: number;
 }
