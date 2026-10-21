@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: 'Evidence-grounded government knowledge assistant prototype workspace.',
 };
 
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
