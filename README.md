@@ -10,6 +10,7 @@
 
 ---
 
+
 ## 🏛️ Executive Overview
 
 **VidhiAI** is an indigenous, sovereign administrative intelligence platform engineered to modernize statutory knowledge retrieval, multi-department gazette synthesis, and secretariat decision-support across the **Government of Assam**.
